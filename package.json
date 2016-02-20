@@ -1,0 +1,33 @@
+{
+  "name": "grommet-native",
+  "version": "0.1.0",
+  "main": "src/js/index.js",
+  "description": "Grommet for native platforms.",
+  "authors": [
+    "Alan Souza",
+    "Bryan Jacquot",
+    "Chris Carlozzi",
+    "Eric Soderberg"
+  ],
+  "homepage": "http://grommet.io",
+  "bugs": "https://github.com/grommet/grommet-native/issues",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/grommet/grommet-native.git"
+  },
+  "preferGlobal": true,
+  "engine-strict": true,
+  "engines": {
+    "node": ">= 0.10",
+    "npm": ">= 4.0"
+  },
+  "dependencies": {
+    "grommet": "https://github.com/grommet/grommet/tarball/stable",
+    "gulp": "^3.9.1",
+    "react-native": "^0.20.0"
+  },
+  "scripts": {
+    "build": "gulp dist"
+  }
+}
