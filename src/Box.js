@@ -1,49 +1,18 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
 import React, { Component, PropTypes, View } from 'react-native';
-
-const ALIGN_MAP = {
-  start: 'align-start',
-  end: 'align-end',
-  center: 'center'
-};
-
-const JUSTIFY_MAP = {
-  start: 'align-start',
-  end: 'align-end',
-  center: 'center',
-  between: 'justify-between'
-};
+import { styleFromProps } from './style';
 
 export default class Box extends Component {
 
   constructor(props) {
     super(props);
-    let style = {};
-    if (props.align) {
-      style.alignItems = ALIGN_MAP[props.align];
-    }
-    if (props.justify) {
-      style.justifyContent = JUSTIFY_MAP[props.justify];
-    }
-    this.setState({ style: style });
-  }
-
-  _styleFromProps (props) {
-    let style = {};
-    if (props.align) {
-      style.alignItems = ALIGN_MAP[props.align];
-    }
-    if (props.justify) {
-      style.justifyContent = JUSTIFY_MAP[props.justify];
-    }
-    return StyleSheet.create(style);
+    this.state = { style: styleFromProps(props) };
   }
 
   render () {
     return (
       <View style={this.state.style}>
-        {texture}
         {this.props.children}
       </View>
     );

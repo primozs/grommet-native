@@ -1,7 +1,7 @@
 {
   "name": "grommet-native",
   "version": "0.1.0",
-  "main": "src/js/index.js",
+  "main": "index.js",
   "description": "Grommet for native platforms.",
   "authors": [
     "Alan Souza",
@@ -23,6 +23,10 @@
     "npm": ">= 4.0"
   },
   "dependencies": {
+    "babel-eslint": "^5.0.0",
+    "babel-plugin-transform-object-rest-spread": "^6.5.0",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-react": "^6.5.0",
     "del": "^2.2.0",
     "gulp": "^3.9.1",
     "mkdirp": "^0.5.1",
