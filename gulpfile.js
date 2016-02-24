@@ -1,3 +1,5 @@
+// (C) Copyright 2016 Hewlett Packard Enterprise Development LP
+
 var gulp = require('gulp');
 var del = require('del');
 var mkdirp = require('mkdirp');
