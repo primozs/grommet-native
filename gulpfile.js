@@ -1,49 +1,22 @@
 var gulp = require('gulp');
-var path = require('path');
-var gulpTasks = require('grommet/utils/gulp/gulp-tasks');
+var del = require('del');
+var mkdirp = require('mkdirp');
+var runSequence = require('run-sequence');
 
-var opts = {
-  dist: path.resolve(__dirname, 'dist'),
-  copyAssets: [
+gulp.task('clean', function () {
+  del.sync(['dist']);
+});
+
+gulp.task('copy', function() {
+  mkdirp('dist');
+  gulp.src([
+    'src/**',
     'README.md',
-    'package.json',
-    {
-      asset: 'src/**',
-      babel: true
-    }
-  ],
-  jsAssets: [
-    'src/*.js'
-  ],
-  mainJs: 'src/index.js',
-  webpack: {
-    output: {
-      filename: 'grommet-native.min.js',
-      libraryTarget: 'var',
-      library: 'GrommetNative'
-    },
-    resolve: {
-      modulesDirectories: ['node_modules', 'src']
-    },
-    externals: {
-      'react': 'React',
-      'grommet': 'grommet'
-    }
-  // },
-  // jsLoader: {
-  //   test: /.js$/,
-  //   include: [
-  //     path.resolve(__dirname, 'src'),
-  //     path.resolve(__dirname, 'node_modules/react/lib'),
-  //     path.resolve(__dirname, 'node_modules/react-native/Libraries/react-native'),
-  //     path.resolve(__dirname, 'node_modules/react-native-navbar')
-  //   ],
-  //   loader: 'react-hot!babel-loader?presets[]=es2015,presets[]=react,plugins[]=transform-object-rest-spread'
-  }
-};
+    'package.json'
+  ])
+  .pipe(gulp.dest('dist'));
+});
 
-gulpTasks(gulp, opts);
-
-gulp.task('dev', function () {
-  console.error('Running "gulp dev" here is not supported. Please use "gulp dist".');
+gulp.task('dist', function(callback) {
+  runSequence('clean', 'copy', callback);
 });

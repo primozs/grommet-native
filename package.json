@@ -23,9 +23,11 @@
     "npm": ">= 4.0"
   },
   "dependencies": {
-    "grommet": "https://github.com/grommet/grommet/tarball/stable",
+    "del": "^2.2.0",
     "gulp": "^3.9.1",
-    "react-native": "^0.20.0"
+    "mkdirp": "^0.5.1",
+    "react-native": "^0.20.0",
+    "run-sequence": "^1.1.5"
   },
   "scripts": {
     "build": "gulp dist"
