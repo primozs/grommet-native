@@ -5,14 +5,14 @@ import { styleFromProps } from './style';
 
 export default class Box extends Component {
 
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = { style: styleFromProps(props) };
   }
 
   render () {
     return (
-      <View style={this.state.style}>
+      <View style={{...this.state.style, ...this.props.style}}>
         {this.props.children}
       </View>
     );

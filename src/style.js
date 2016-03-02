@@ -1,13 +1,14 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
-import { StyleSheet } from 'react-native';
+// import { StyleSheet } from 'react-native';
 
 const SPACING_UNIT = 24;
 
 const PAD_MAP = {
   small: SPACING_UNIT / 2,
   medium: SPACING_UNIT,
-  large: SPACING_UNIT * 2
+  large: SPACING_UNIT * 2,
+  none: 0
 };
 
 const ALIGN_MAP = {
@@ -43,17 +44,35 @@ const COLOR_MAP = {
   'grey-3': '#434343',
   'grey-4': '#666666',
   'text': '#333333',
-  'colored-text': 'rgba(255, 255, 255, 0.85)'
+  'secondary': '#777777',
+  'colored-text': 'rgba(255, 255, 255, 0.85)',
+  'border': 'rgba(0, 0, 0, 0.15)'
 };
 
 export const spacingUnit = SPACING_UNIT;
 
 export function colorIndex (name) {
   return COLOR_MAP[name];
-}
+};
+
+export function padSize (name) {
+  return PAD_MAP[name];
+};
+
+export const formFieldTextInput = {
+  height: SPACING_UNIT,
+  paddingHorizontal: SPACING_UNIT
+};
+
+export const errorText = {
+  color: colorIndex('error')
+};
 
 export function styleFromProps (props) {
   let style = {};
+  if (props.direction) {
+    style.flexDirection = props.direction;
+  }
   if (props.align) {
     style.alignItems = ALIGN_MAP[props.align];
   }
@@ -70,5 +89,5 @@ export function styleFromProps (props) {
       style.paddingVertical = PAD_MAP[props.pad.horizontal];
     }
   }
-  return StyleSheet.create(style);
+  return style; //StyleSheet.create(style);
 };
