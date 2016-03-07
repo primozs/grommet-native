@@ -5,7 +5,9 @@ import Button from './Button';
 import FormField from './FormField';
 import FormFields from './FormFields';
 import Heading from './Heading';
+import Title from './Title';
 import { colorIndex, padSize, spacingUnit, errorText, formFieldTextInput } from './style';
+import * as icons from './icons/index';
 
 const style = {
   colorIndex: colorIndex,
@@ -15,4 +17,4 @@ const style = {
   spacingUnit: spacingUnit
 };
 
-export { Box, Button, FormField, FormFields, Heading, style };
+export { Box, Button, FormField, FormFields, Heading, Title, style, icons };

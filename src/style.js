@@ -18,10 +18,10 @@ const ALIGN_MAP = {
 };
 
 const JUSTIFY_MAP = {
-  start: 'align-start',
-  end: 'align-end',
+  start: 'flex-start',
+  end: 'flex-end',
   center: 'center',
-  between: 'justify-between'
+  between: 'space-between'
 };
 
 const COLOR_MAP = {

@@ -18,11 +18,14 @@ export default class Button extends Component {
         paddingVertical: padSize('small')
       },
       text: {
+        color: colorIndex('text'),
         fontSize: 19,
         fontWeight: '600'
       }
     };
-    if (props.primary) {
+    if (props.icon) {
+      style.view.paddingHorizontal = padSize('small');
+    } else if (props.primary) {
       style.view.backgroundColor = colorIndex('brand');
       style.text.color = colorIndex('colored-text');
     } else if (props.accent) {
@@ -32,17 +35,22 @@ export default class Button extends Component {
       style.view.borderWidth = 4;
       style.view.borderStyle = 'solid';
       style.view.borderColor = colorIndex('brand');
-      style.text.color = colorIndex('text');
     }
     return StyleSheet.create(style);
   }
 
   render () {
     const { style } = this.state;
+    let label;
+    if (this.props.label) {
+      label = <Text style={style.text}>{this.props.label}</Text>;
+    }
+    let icon = this.props.icon;
     return (
       <TouchableHighlight onPress={this.props.onPress}>
         <View style={style.view}>
-          <Text style={style.text}>{this.props.label}</Text>
+          {icon}
+          {label}
         </View>
       </TouchableHighlight>
     );
