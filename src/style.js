@@ -1,7 +1,5 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
-// import { StyleSheet } from 'react-native';
-
 const SPACING_UNIT = 24;
 
 const PAD_MAP = {
@@ -9,19 +7,6 @@ const PAD_MAP = {
   medium: SPACING_UNIT,
   large: SPACING_UNIT * 2,
   none: 0
-};
-
-const ALIGN_MAP = {
-  start: 'align-start',
-  end: 'align-end',
-  center: 'center'
-};
-
-const JUSTIFY_MAP = {
-  start: 'flex-start',
-  end: 'flex-end',
-  center: 'center',
-  between: 'space-between'
 };
 
 const COLOR_MAP = {
@@ -66,28 +51,4 @@ export const formFieldTextInput = {
 
 export const errorText = {
   color: colorIndex('error')
-};
-
-export function styleFromProps (props) {
-  let style = {};
-  if (props.direction) {
-    style.flexDirection = props.direction;
-  }
-  if (props.align) {
-    style.alignItems = ALIGN_MAP[props.align];
-  }
-  if (props.justify) {
-    style.justifyContent = JUSTIFY_MAP[props.justify];
-  }
-  if (typeof props.pad === 'string') {
-    style.padding = PAD_MAP[props.pad];
-  } else if (typeof props.pad === 'object') {
-    if (props.pad.horizontal) {
-      style.paddingHorizontal = PAD_MAP[props.pad.horizontal];
-    }
-    if (props.pad.vertical) {
-      style.paddingVertical = PAD_MAP[props.pad.horizontal];
-    }
-  }
-  return style; //StyleSheet.create(style);
 };

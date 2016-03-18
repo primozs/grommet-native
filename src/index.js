@@ -4,6 +4,7 @@ import Box from './Box';
 import Button from './Button';
 import FormField from './FormField';
 import FormFields from './FormFields';
+import Header from './Header';
 import Heading from './Heading';
 import Title from './Title';
 import { colorIndex, padSize, spacingUnit, errorText, formFieldTextInput } from './style';
@@ -17,4 +18,4 @@ const style = {
   spacingUnit: spacingUnit
 };
 
-export { Box, Button, FormField, FormFields, Heading, Title, style, icons };
+export { Box, Button, FormField, FormFields, Header, Heading, Title, style, icons };

@@ -1,14 +1,54 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
 import React, { Component, PropTypes, View } from 'react-native';
-import { styleFromProps } from './style';
+import { padSize, colorIndex } from './style';
+
+const ALIGN_MAP = {
+  start: 'align-start',
+  end: 'align-end',
+  center: 'center'
+};
+
+const JUSTIFY_MAP = {
+  start: 'flex-start',
+  end: 'flex-end',
+  center: 'center',
+  between: 'space-between'
+};
 
 export default class Box extends Component {
 
   constructor (props) {
     super(props);
-    this.state = { style: styleFromProps(props) };
+    this.state = { style: this._styleFromProps(props) };
   }
+
+  _styleFromProps (props) {
+    let style = {};
+    if (props.direction) {
+      style.flexDirection = props.direction;
+    }
+    if (props.align) {
+      style.alignItems = ALIGN_MAP[props.align];
+    }
+    if (props.justify) {
+      style.justifyContent = JUSTIFY_MAP[props.justify];
+    }
+    if (typeof props.pad === 'string') {
+      style.padding = padSize(props.pad);
+    } else if (typeof props.pad === 'object') {
+      if (props.pad.horizontal) {
+        style.paddingHorizontal = padSize(props.pad.horizontal);
+      }
+      if (props.pad.vertical) {
+        style.paddingVertical = padSize(props.pad.vertical);
+      }
+    }
+    if (props.colorIndex) {
+      style.backgroundColor = colorIndex(props.colorIndex);
+    }
+    return style; //StyleSheet.create(style);
+  };
 
   render () {
     return (

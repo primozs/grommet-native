@@ -15,9 +15,8 @@ export default class Title extends Component {
   }
 
   render () {
-    const { style } = this.state;
     return (
-      <Text style={style}>{this.props.children}</Text>
+      <Text style={{...this.state.style, ...this.props.style}}>{this.props.children}</Text>
     );
   }
 
