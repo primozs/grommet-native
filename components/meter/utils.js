@@ -2,7 +2,7 @@
 
 import React, { PropTypes } from 'react';
 import { Path } from 'react-native-art-svg';
-import { colorForIndex } from '../style';
+import { colorForIndex } from '../../style';
 
 export var baseUnit = 24;
 export var baseDimension = 192; // 24 * 8

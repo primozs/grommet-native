@@ -1,7 +1,7 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
 import React, { Component, PropTypes, View, Text, StyleSheet } from 'react-native';
-import { colorForIndex, spacingUnit } from './style';
+import { colorForIndex, spacingUnit } from '../style';
 
 export default class FormField extends Component {
 

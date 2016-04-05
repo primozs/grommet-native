@@ -1,7 +1,7 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
 import React, { Component, PropTypes, Text, StyleSheet } from 'react-native';
-import { padSize } from './style';
+import { padSize } from '../style';
 
 const FONT_SIZE_MAP = [64, 48, 36, 24, 18, 18];
 

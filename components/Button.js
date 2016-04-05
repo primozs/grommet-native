@@ -2,7 +2,7 @@
 
 import React, { Component, PropTypes, TouchableHighlight, View, Text,
   StyleSheet } from 'react-native';
-import { colorForIndex, padSize } from './style';
+import { colorForIndex, padSize } from '../style';
 
 export default class Button extends Component {
 

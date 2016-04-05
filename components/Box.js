@@ -1,7 +1,7 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
 import React, { Component, PropTypes, View } from 'react-native';
-import { padSize, colorForIndex } from './style';
+import { padSize, colorForIndex } from '../style';
 
 const ALIGN_MAP = {
   start: 'align-start',

@@ -1,7 +1,7 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
 import React, { Component, StyleSheet, View } from 'react-native';
-import { padSize } from './style';
+import { padSize } from '../style';
 
 export default class FormFields extends Component {
 

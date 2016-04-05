@@ -1,7 +1,7 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
 import React, { Component, PropTypes, View, Text } from 'react-native';
-import { colorForIndex } from './style';
+import { colorForIndex } from '../style';
 import { baseDimension, baseUnit } from './meter/utils';
 import Bar from './meter/Bar';
 import Circle from './meter/Circle';

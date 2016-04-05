@@ -1,15 +1,15 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
-import Box from './Box';
-import Button from './Button';
-import FormField from './FormField';
-import FormFields from './FormFields';
-import Header from './Header';
-import Heading from './Heading';
-import Meter from './Meter';
-import Title from './Title';
+import Box from './components/Box';
+import Button from './components/Button';
+import FormField from './components/FormField';
+import FormFields from './components/FormFields';
+import Header from './components/Header';
+import Heading from './components/Heading';
+import Meter from './components/Meter';
+import Title from './components/Title';
 import { colorForIndex, padSize, spacingUnit, errorText, formFieldTextInput } from './style';
-import * as icons from './icons/index';
+import * as icons from './components/icons/index';
 
 const style = {
   colorForIndex: colorForIndex,
