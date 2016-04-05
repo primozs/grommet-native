@@ -24,6 +24,7 @@ const COLOR_MAP = {
   ok: '#01a982',
   unknown: '#CCCCCC',
   disabled: '#CCCCCC',
+  unset: '#DDDDDD',
   'grey-1': '#333333',
   'grey-2': '#3B3B3B',
   'grey-3': '#434343',
@@ -36,7 +37,7 @@ const COLOR_MAP = {
 
 export const spacingUnit = SPACING_UNIT;
 
-export function colorIndex (name) {
+export function colorForIndex (name) {
   return COLOR_MAP[name];
 };
 
@@ -50,5 +51,5 @@ export const formFieldTextInput = {
 };
 
 export const errorText = {
-  color: colorIndex('error')
+  color: colorForIndex('error')
 };

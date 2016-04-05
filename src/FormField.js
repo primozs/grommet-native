@@ -1,7 +1,7 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
 import React, { Component, PropTypes, View, Text, StyleSheet } from 'react-native';
-import { colorIndex, spacingUnit } from './style';
+import { colorForIndex, spacingUnit } from './style';
 
 export default class FormField extends Component {
 
@@ -13,13 +13,13 @@ export default class FormField extends Component {
   _styleFromProps (props) {
     let style = {
       view: {
-        borderColor: colorIndex('border'),
+        borderColor: colorForIndex('border'),
         borderStyle: 'solid',
         borderWidth: 1,
         marginBottom: -1
       },
       label: {
-        color: colorIndex('secondary'),
+        color: colorForIndex('secondary'),
         paddingHorizontal: spacingUnit,
         paddingVertical: spacingUnit / 4
       }

@@ -1,7 +1,7 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
 import React, { Component, PropTypes, View } from 'react-native';
-import { padSize, colorIndex } from './style';
+import { padSize, colorForIndex } from './style';
 
 const ALIGN_MAP = {
   start: 'align-start',
@@ -45,7 +45,7 @@ export default class Box extends Component {
       }
     }
     if (props.colorIndex) {
-      style.backgroundColor = colorIndex(props.colorIndex);
+      style.backgroundColor = colorForIndex(props.colorIndex);
     }
     return style; //StyleSheet.create(style);
   };

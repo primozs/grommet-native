@@ -6,16 +6,17 @@ import FormField from './FormField';
 import FormFields from './FormFields';
 import Header from './Header';
 import Heading from './Heading';
+import Meter from './Meter';
 import Title from './Title';
-import { colorIndex, padSize, spacingUnit, errorText, formFieldTextInput } from './style';
+import { colorForIndex, padSize, spacingUnit, errorText, formFieldTextInput } from './style';
 import * as icons from './icons/index';
 
 const style = {
-  colorIndex: colorIndex,
+  colorForIndex: colorForIndex,
   errorText: errorText,
   formFieldTextInput: formFieldTextInput,
   padSize: padSize,
   spacingUnit: spacingUnit
 };
 
-export { Box, Button, FormField, FormFields, Header, Heading, Title, style, icons };
+export { Box, Button, FormField, FormFields, Header, Heading, Meter, Title, style, icons };
