@@ -2,6 +2,7 @@
 
 import Box from './components/Box';
 import Button from './components/Button';
+import Footer from './components/Footer';
 import FormField from './components/FormField';
 import FormFields from './components/FormFields';
 import Header from './components/Header';
@@ -20,5 +21,5 @@ const style = {
   spacingUnit: spacingUnit
 };
 
-export { Box, Button, FormField, FormFields, Header, Heading, Meter, Search,
-  Title, style, icons };
+export { Box, Button, Footer, FormField, FormFields, Header, Heading, Meter,
+  Search, Title, style, icons };

@@ -44,6 +44,9 @@ export default class Box extends Component {
         style.paddingVertical = padSize(props.pad.vertical);
       }
     }
+    if (props.flex) {
+      style.flex = 1;
+    }
     if (props.colorIndex) {
       style.backgroundColor = colorForIndex(props.colorIndex);
     }
@@ -74,6 +77,7 @@ Box.propTypes = {
   backgroundImage: PropTypes.string,
   colorIndex: PropTypes.string,
   direction: PropTypes.oneOf(['row', 'column']),
+  flex: PropTypes.bool,
   full: PropTypes.oneOf([true, 'horizontal', 'vertical', false]),
   justify: PropTypes.oneOf(['start', 'center', 'between', 'end']),
   pad: PropTypes.oneOfType([

@@ -11,25 +11,35 @@ const SIZE = {
   huge: spacingUnit * 12
 };
 
+// react-native-art-svg doesn't understand rgba() color values. So, we parse
+// them to set strokeOpacity.
+const RGBA = new RegExp('rgba[^,]+,[^,]+,[^,]+,\s*([^\)]+)');
+
 export default class Icon extends Component {
 
   constructor (props) {
     super(props);
+    const color = colorForIndex(props.colorIndex);
+    const match = RGBA.exec(color);
+    let opacity = 1;
+    if (match) {
+      opacity = parseFloat(match[1]);
+    }
     this.state = {
       color: colorForIndex(props.colorIndex),
+      opacity: opacity,
       size: SIZE[props.size]
     };
   }
 
   render () {
     const { pathCommands, children } = this.props;
-    const { color, size } = this.state;
+    const { color, opacity, size } = this.state;
     let contents;
     if (pathCommands) {
       contents = (
-        <Path fill="none" stroke={color}
-          strokeOpacity="0.5" strokeWidth="2" strokeMiterlimit="10"
-          d={pathCommands}/>
+        <Path fill="none" stroke={color} strokeOpacity={opacity}
+          strokeWidth="2" strokeMiterlimit="10" d={pathCommands}/>
       );
     } else if (children) {
       contents = children;

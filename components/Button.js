@@ -47,7 +47,7 @@ export default class Button extends Component {
     }
     let icon = this.props.icon;
     return (
-      <TouchableHighlight onPress={this.props.onPress}>
+      <TouchableHighlight style={this.props.style} onPress={this.props.onPress}>
         <View style={style.view}>
           {icon}
           {label}
