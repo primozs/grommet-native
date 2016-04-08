@@ -27,10 +27,10 @@ export default class Button extends Component {
       style.view.paddingHorizontal = padSize('small');
     } else if (props.primary) {
       style.view.backgroundColor = colorForIndex('brand');
-      style.text.color = colorForIndex('colored-text');
+      style.text.color = colorForIndex('colored');
     } else if (props.accent) {
       style.view.backgroundColor = colorForIndex('accent-3');
-      style.text.color = colorForIndex('colored-text');
+      style.text.color = colorForIndex('colored');
     } else {
       style.view.borderWidth = 4;
       style.view.borderStyle = 'solid';

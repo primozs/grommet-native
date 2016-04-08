@@ -31,8 +31,9 @@ const COLOR_MAP = {
   'grey-4': '#666666',
   'text': '#333333',
   'secondary': '#777777',
-  'colored-text': 'rgba(255, 255, 255, 0.85)',
-  'border': 'rgba(0, 0, 0, 0.15)'
+  'border': 'rgba(0, 0, 0, 0.15)',
+  'icon': 'rgba(0, 0, 0, 0.25)',
+  'colored': 'rgba(255, 255, 255, 0.85)'
 };
 
 export const spacingUnit = SPACING_UNIT;
