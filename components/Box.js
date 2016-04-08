@@ -1,6 +1,6 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
-import React, { Component, PropTypes, View } from 'react-native';
+import React, { Component, PropTypes, View, StatusBar } from 'react-native';
 import { padSize, colorForIndex } from '../style';
 
 const ALIGN_MAP = {
@@ -47,12 +47,21 @@ export default class Box extends Component {
     if (props.colorIndex) {
       style.backgroundColor = colorForIndex(props.colorIndex);
     }
+    if (props.statusBar) {
+      style.paddingTop = style.paddingVertical + 12;
+    }
     return style; //StyleSheet.create(style);
   };
 
   render () {
+    let statusBar;
+    if (this.props.statusBar) {
+      const barStyle = (this.props.colorIndex ? 'light-content' : 'default');
+      statusBar = <StatusBar barStyle={barStyle} />;
+    }
     return (
       <View style={{...this.state.style, ...this.props.style}}>
+        {statusBar}
         {this.props.children}
       </View>
     );
@@ -61,7 +70,6 @@ export default class Box extends Component {
 }
 
 Box.propTypes = {
-  a11yTitle: PropTypes.string,
   align: PropTypes.oneOf(['start', 'center', 'end', 'stretch']),
   backgroundImage: PropTypes.string,
   colorIndex: PropTypes.string,
@@ -79,6 +87,7 @@ Box.propTypes = {
   primary: PropTypes.bool,
   reverse: PropTypes.bool,
   separator: PropTypes.oneOf(['top', 'bottom', 'left', 'right', 'horizontal', 'vertical', 'all']),
+  statusBar: PropTypes.bool,
   textAlign: PropTypes.oneOf(['left', 'center', 'right']),
   texture: PropTypes.oneOfType([
     PropTypes.node,
@@ -88,7 +97,6 @@ Box.propTypes = {
 };
 
 Box.defaultProps = {
-  a11yTitle: 'Box',
   direction: 'column',
   pad: 'none'
 };

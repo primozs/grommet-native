@@ -27,7 +27,8 @@ export default class Icon extends Component {
     let contents;
     if (pathCommands) {
       contents = (
-        <Path fill="none" stroke={color} strokeWidth="2" strokeMiterlimit="10"
+        <Path fill="none" stroke={color}
+          strokeOpacity="0.5" strokeWidth="2" strokeMiterlimit="10"
           d={pathCommands}/>
       );
     } else if (children) {

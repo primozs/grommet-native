@@ -9,6 +9,7 @@ const PAD_MAP = {
   none: 0
 };
 
+// Remember that react-native-art-svg can't handle rgba()
 const COLOR_MAP = {
   brand: '#01a982',
   'neutral-1': '#425563',
@@ -29,6 +30,8 @@ const COLOR_MAP = {
   'grey-2': '#3B3B3B',
   'grey-3': '#434343',
   'grey-4': '#666666',
+  'light-1': '#FFFFFF',
+  'light-2': '#F5F5F5',
   'text': '#333333',
   'secondary': '#777777',
   'border': 'rgba(0, 0, 0, 0.15)',
