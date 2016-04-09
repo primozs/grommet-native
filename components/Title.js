@@ -1,7 +1,7 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
-import React, { Component, PropTypes, Text } from 'react-native';
-import { padSize, colorForIndex } from '../style';
+import React, { Component, PropTypes, View, Text } from 'react-native';
+import { spacingUnit, padSize, colorForIndex } from '../style';
 
 export default class Title extends Component {
 
@@ -11,21 +11,36 @@ export default class Title extends Component {
   }
 
   _styleFromProps (props) {
-    let style = { fontSize: 24, fontWeight: '600' };
+    let style = {
+      text: {
+        fontSize: 18,
+        fontWeight: '600',
+        textAlign: 'center'
+      },
+      view: {
+        alignItems: 'center',
+        flexDirection: 'row',
+        flex: 1,
+        height: (spacingUnit * 2),
+        justifyContent: 'center'
+      }
+    };
     if (props.pad) {
-      style.paddingHorizontal = padSize(props.pad);
+      style.view.paddingHorizontal = padSize(props.pad);
     }
     if (props.colorIndex) {
-      style.color = colorForIndex(props.colorIndex);
+      style.text.color = colorForIndex(props.colorIndex);
     }
     return style; //StyleSheet.create(style);
   }
 
   render () {
     return (
-      <Text style={{...this.state.style, ...this.props.style}}>
-        {this.props.children}
-      </Text>
+      <View style={{...this.state.style.view, ...this.props.style}}>
+        <Text style={this.state.style.text}>
+          {this.props.children}
+        </Text>
+      </View>
     );
   }
 }

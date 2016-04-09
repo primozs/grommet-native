@@ -15,7 +15,8 @@ export default class Button extends Component {
     let style = {
       view: {
         paddingHorizontal: padSize('medium'),
-        paddingVertical: padSize('small')
+        paddingVertical: padSize('small'),
+        alignItems: 'center'
       },
       text: {
         color: colorForIndex('text'),
