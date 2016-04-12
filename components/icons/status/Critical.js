@@ -1,6 +1,6 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
-import React, { Component } from 'react-native';
+import React, { Component, PropTypes } from 'react-native';
 import { Path } from 'react-native-art-svg';
 import { colorForIndex } from '../../../style';
 import Icon from '../Icon';
@@ -8,12 +8,20 @@ import Icon from '../Icon';
 export default class Critical extends Component {
 
   render () {
-    const { size } = this.props;
+    const { inverse, size } = this.props;
+    let fill, detailStroke;
+    if (inverse) {
+      fill = colorForIndex('colored');
+      detailStroke = colorForIndex('critical');
+    } else {
+      fill = colorForIndex('critical');
+      detailStroke = colorForIndex('colored');
+    }
     let detail;
     if ('small' !== size) {
       detail = (
         <Path fill="none" strokeWidth="2" strokeLinecap="butt"
-          stroke={colorForIndex('colored')}
+          stroke={detailStroke}
           d="M8,8 L16,16 M8,16 L16,8" />
       );
     } else {
@@ -21,7 +29,7 @@ export default class Critical extends Component {
     }
     return (
       <Icon size={size}>
-        <Path stroke="none" fill={colorForIndex('critical')}
+        <Path stroke="none" fill={fill}
           d="M12,0 L24,12 L12,24 L0,12 Z" />
         {detail}
       </Icon>
@@ -30,6 +38,7 @@ export default class Critical extends Component {
 };
 
 Critical.propTypes = {
+  inverse: PropTypes.bool,
   size: Icon.propTypes.size
 };
 

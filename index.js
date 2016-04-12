@@ -8,6 +8,7 @@ import FormFields from './components/FormFields';
 import Header from './components/Header';
 import Heading from './components/Heading';
 import Meter from './components/Meter';
+import Notification from './components/Notification';
 import Search from './components/Search';
 import Title from './components/Title';
 import { colorForIndex, padSize, spacingUnit, errorText, formFieldTextInput } from './style';
@@ -22,4 +23,4 @@ const style = {
 };
 
 export { Box, Button, Footer, FormField, FormFields, Header, Heading, Meter,
-  Search, Title, style, icons };
+  Notification, Search, Title, style, icons };

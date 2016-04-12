@@ -20,14 +20,21 @@ const COMPONENT = {
 export default class Status extends Component {
 
   render () {
-    const { size, value } = this.props;
+    const { inverse, size, value } = this.props;
     const Component = COMPONENT[value.toLowerCase()] || COMPONENT.unknown;
-    return <Component size={size} />;
+    return <Component size={size} inverse={inverse} />;
   }
 };
 
 Status.propTypes = {
-  size: PropTypes.oneOf(['small', 'medium', 'large', 'huge'])
+  inverse: PropTypes.bool,
+  size: PropTypes.oneOf(['small', 'medium', 'large', 'huge']),
+  value: PropTypes.oneOf(['critical', 'Critical', 'disabled', 'Disabled',
+    'ok', 'OK', 'unknown', 'Unknown', 'warning', 'Warning'])
+};
+
+Status.defaultProps = {
+  value: 'unknown'
 };
 
 Status.icon = true;

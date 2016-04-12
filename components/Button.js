@@ -32,11 +32,14 @@ export default class Button extends Component {
     } else if (props.accent) {
       style.view.backgroundColor = colorForIndex('accent-3');
       style.text.color = colorForIndex('colored');
+    } else if (props.colorIndex) {
+      style.text.color = colorForIndex(props.colorIndex);
     } else {
       style.view.borderWidth = 4;
       style.view.borderStyle = 'solid';
       style.view.borderColor = colorForIndex('brand');
     }
+
     return StyleSheet.create(style);
   }
 
@@ -61,6 +64,7 @@ export default class Button extends Component {
 
 Button.propTypes = {
   accent: PropTypes.bool,
+  colorIndex: PropTypes.string,
   fill: PropTypes.bool,
   icon: PropTypes.element,
   label: PropTypes.node,

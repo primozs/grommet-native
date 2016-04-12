@@ -23,6 +23,10 @@ export default class Box extends Component {
     this.state = { style: this._styleFromProps(props) };
   }
 
+  componentWillReceiveProps (nextProps) {
+    this.setState({ style: this._styleFromProps(nextProps) });
+  }
+
   _styleFromProps (props) {
     let style = {};
     if (props.direction) {
@@ -56,6 +60,10 @@ export default class Box extends Component {
     return style; //StyleSheet.create(style);
   };
 
+  setNativeProps (nativeProps) {
+    this.refs.view.setNativeProps(nativeProps);
+  }
+
   render () {
     let statusBar;
     if (this.props.statusBar) {
@@ -63,7 +71,7 @@ export default class Box extends Component {
       statusBar = <StatusBar barStyle={barStyle} />;
     }
     return (
-      <View style={{...this.state.style, ...this.props.style}}>
+      <View ref="view" style={{...this.state.style, ...this.props.style}}>
         {statusBar}
         {this.props.children}
       </View>

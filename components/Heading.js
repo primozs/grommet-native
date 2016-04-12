@@ -42,7 +42,6 @@ export default class Heading extends Component {
 Heading.propTypes = {
   align: PropTypes.oneOf(['start', 'center', 'end']),
   margin: PropTypes.oneOf(['none', 'small', 'medium', 'large']),
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
   strong: PropTypes.bool,
   level: PropTypes.oneOf([1, 2, 3, 4, 5])
 };
