@@ -48,6 +48,24 @@ export default class Box extends Component {
         style.paddingVertical = padSize(props.pad.vertical);
       }
     }
+    if (props.separator) {
+      style.borderColor = colorForIndex('border');
+      if ('top' === props.separator) {
+        style.borderTopWidth = 1;
+      } else if ('bottom' === props.separator) {
+        style.borderBottomWidth = 1;
+      } else if ('left' === props.separator) {
+        style.borderLeftWidth = 1;
+      } else if ('right' === props.separator) {
+        style.borderRightWidth = 1;
+      } else if ('horizontal' === props.separator) {
+        style.borderTopWidth = 1;
+        style.borderBottomWidth = 1;
+      } else if ('vertical' === props.separator) {
+        style.borderLeftWidth = 1;
+        style.borderRightWidth = 1;
+      }
+    }
     if (props.flex) {
       style.flex = 1;
     }
