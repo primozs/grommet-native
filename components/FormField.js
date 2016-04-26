@@ -1,6 +1,7 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
-import React, { Component, PropTypes, View, Text, StyleSheet } from 'react-native';
+import React, { Component, PropTypes, View, StyleSheet } from 'react-native';
+import Text from './Text';
 import { colorForIndex, spacingUnit } from '../style';
 
 export default class FormField extends Component {
@@ -8,6 +9,10 @@ export default class FormField extends Component {
   constructor (props) {
     super(props);
     this.state = { style: this._styleFromProps(props) };
+  }
+
+  componentWillReceiveProps (nextProps) {
+    this.setState({ style: this._styleFromProps(nextProps) });
   }
 
   _styleFromProps (props) {

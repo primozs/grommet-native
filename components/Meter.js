@@ -1,6 +1,7 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
-import React, { Component, PropTypes, View, Text } from 'react-native';
+import React, { Component, PropTypes, View, StyleSheet } from 'react-native';
+import Text from './Text';
 import { colorForIndex } from '../style';
 import { baseDimension, baseUnit } from './meter/utils';
 import Bar from './meter/Bar';
@@ -147,26 +148,24 @@ export default class Meter extends Component {
   _styleFromProps (props) {
     let style = {
       view: {},
-      active: {
-        view: {
-          flexDirection: 'column'
-        },
-        valueView: {
-          flexDirection: 'row',
-          alignItems: 'center'
-        },
-        value: {
-          fontSize: 36,
-          fontWeight: '700',
-          paddingRight: (baseUnit / 4)
-        },
-        units: {
-          fontSize: 20,
-          color: colorForIndex('secondary')
-        },
-        label: {
-          fontSize: 16
-        }
+      activeView: {
+        flexDirection: 'column'
+      },
+      valueView: {
+        flexDirection: 'row',
+        alignItems: 'center'
+      },
+      valueText: {
+        fontSize: 36,
+        fontWeight: '700',
+        paddingRight: (baseUnit / 4)
+      },
+      unitsText: {
+        fontSize: 20,
+        color: colorForIndex('secondary')
+      },
+      labelText: {
+        fontSize: 16
       }
     };
     if ('bar' === props.type) {
@@ -175,12 +174,12 @@ export default class Meter extends Component {
         justifyContent: 'space-between',
         alignItems: 'center'
       };
-      style.active.view = {
+      style.activeView = {
         paddingLeft: (baseUnit / 2),
         alignItems: 'flex-start'
       };
     } else if ('circle' === props.type) {
-      style.active.view = {
+      style.activeView = {
         position: 'absolute',
         top: 0,
         width: baseDimension,
@@ -191,7 +190,7 @@ export default class Meter extends Component {
     } else if ('arc' === props.type) {
       style.view.paddingBottom = (baseUnit * 2);
       style.view.backgroundColor = "#f2f2f2";
-      style.active.view = {
+      style.activeView = {
         position: 'absolute',
         bottom: - (baseDimension * 0.65),
         width: baseDimension,
@@ -199,7 +198,7 @@ export default class Meter extends Component {
         alignItems: 'center'
       };
     }
-    return style;
+    return StyleSheet.create(style);
   }
 
   // Generates state based on the provided props.
@@ -275,21 +274,21 @@ export default class Meter extends Component {
     let units;
     if (this.props.units) {
       units = (
-        <Text style={style.active.units}>
+        <Text style={style.unitsText}>
           {this.props.units}
         </Text>
       );
     }
 
     return (
-      <View style={style.active.view}>
-        <View style={style.active.valueView}>
-          <Text style={style.active.value}>
+      <View style={style.activeView}>
+        <View style={style.valueView}>
+          <Text style={style.valueText}>
             {fields.value}
           </Text>
           {units}
         </View>
-        <Text style={style.active.label}>
+        <Text style={style.labelText}>
           {fields.label}
         </Text>
       </View>

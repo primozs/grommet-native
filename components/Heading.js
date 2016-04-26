@@ -1,6 +1,7 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
-import React, { Component, PropTypes, Text, StyleSheet } from 'react-native';
+import React, { Component, PropTypes, StyleSheet } from 'react-native';
+import Text from './Text';
 import { padSize } from '../style';
 
 const FONT_SIZE_MAP = [64, 48, 36, 24, 18, 18];
@@ -18,22 +19,26 @@ export default class Heading extends Component {
     this.state = { style: this._styleFromProps(props) };
   }
 
+  componentWillReceiveProps (nextProps) {
+    this.setState({ style: this._styleFromProps(nextProps) });
+  }
+
   _styleFromProps (props) {
-    let style = { fontSize: FONT_SIZE_MAP[props.level] };
+    let style = { text: {fontSize: FONT_SIZE_MAP[props.level]} };
     if (props.strong) {
-      style.fontWeight = '600';
+      style.text.fontWeight = '600';
     }
     if (props.align) {
-      style.textAlign = ALIGN_MAP[props.align];
+      style.text.textAlign = ALIGN_MAP[props.align];
     }
-    style.marginBottom = padSize(props.margin || 'medium');
-    return style; //StyleSheet.create(style);
+    style.text.marginBottom = padSize(props.margin || 'medium');
+    return StyleSheet.create(style);
   }
 
   render () {
     const { style } = this.state;
     return (
-      <Text style={style}>{this.props.children}</Text>
+      <Text style={style.text}>{this.props.children}</Text>
     );
   }
 

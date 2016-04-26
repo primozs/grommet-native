@@ -1,6 +1,6 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
-import React, { Component, PropTypes, View } from 'react-native';
+import React, { Component, PropTypes, View, StyleSheet } from 'react-native';
 import { padSize } from '../style';
 
 export default class FormFields extends Component {
@@ -11,17 +11,17 @@ export default class FormFields extends Component {
   }
 
   _styleFromProps (props) {
-    let style = { marginBottom: padSize('large') };
+    let style = { view: {marginBottom: padSize('large')} };
     if (props.flex) {
-      style.flex = 1;
+      style.view.flex = 1;
     }
-    return style; //StyleSheet.create(style);
+    return StyleSheet.create(style);
   }
 
   render () {
     const { style } = this.state;
     return (
-      <View style={style}>
+      <View style={style.view}>
         {this.props.children}
       </View>
     );

@@ -10,17 +10,21 @@ import Heading from './components/Heading';
 import Meter from './components/Meter';
 import Notification from './components/Notification';
 import Search from './components/Search';
+import Text from './components/Text';
+import TextInput from './components/TextInput';
 import Title from './components/Title';
-import { colorForIndex, padSize, spacingUnit, errorText, formFieldTextInput } from './style';
+import { colorForIndex, padSize, spacingUnit, errorText, fontFamily,
+  formFieldTextInput } from './style';
 import * as icons from './components/icons/index';
 
 const style = {
   colorForIndex: colorForIndex,
   errorText: errorText,
+  fontFamily: fontFamily,
   formFieldTextInput: formFieldTextInput,
   padSize: padSize,
   spacingUnit: spacingUnit
 };
 
 export { Box, Button, Footer, FormField, FormFields, Header, Heading, Meter,
-  Notification, Search, Title, style, icons };
+  Notification, Search, Text, TextInput, Title, style, icons };

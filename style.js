@@ -2,6 +2,8 @@
 
 const SPACING_UNIT = 24;
 
+const FONT_FAMILY = 'MetricHPE';
+
 const PAD_MAP = {
   small: SPACING_UNIT / 2,
   medium: SPACING_UNIT,
@@ -60,3 +62,5 @@ export const formFieldTextInput = {
 export const errorText = {
   color: colorForIndex('error')
 };
+
+export const fontFamily = FONT_FAMILY;

@@ -1,7 +1,8 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
-import React, { Component, PropTypes, TouchableHighlight, View, Text,
+import React, { Component, PropTypes, TouchableHighlight, View,
   StyleSheet } from 'react-native';
+import Text from './Text';
 import { colorForIndex, padSize } from '../style';
 
 export default class Button extends Component {
@@ -9,6 +10,10 @@ export default class Button extends Component {
   constructor (props) {
     super(props);
     this.state = { style: this._styleFromProps(props) };
+  }
+
+  componentWillReceiveProps (nextProps) {
+    this.setState({ style: this._styleFromProps(nextProps) });
   }
 
   _styleFromProps (props) {

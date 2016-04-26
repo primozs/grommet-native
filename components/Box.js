@@ -1,6 +1,6 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
-import React, { Component, PropTypes, View, StatusBar } from 'react-native';
+import React, { Component, PropTypes, View, StatusBar, StyleSheet } from 'react-native';
 import { padSize, colorForIndex } from '../style';
 
 const ALIGN_MAP = {
@@ -28,54 +28,54 @@ export default class Box extends Component {
   }
 
   _styleFromProps (props) {
-    let style = {};
+    let style = { view: {} };
     if (props.direction) {
-      style.flexDirection = props.direction;
+      style.view.flexDirection = props.direction;
     }
     if (props.align) {
-      style.alignItems = ALIGN_MAP[props.align];
+      style.view.alignItems = ALIGN_MAP[props.align];
     }
     if (props.justify) {
-      style.justifyContent = JUSTIFY_MAP[props.justify];
+      style.view.justifyContent = JUSTIFY_MAP[props.justify];
     }
     if (typeof props.pad === 'string') {
-      style.padding = padSize(props.pad);
+      style.view.padding = padSize(props.pad);
     } else if (typeof props.pad === 'object') {
       if (props.pad.horizontal) {
-        style.paddingHorizontal = padSize(props.pad.horizontal);
+        style.view.paddingHorizontal = padSize(props.pad.horizontal);
       }
       if (props.pad.vertical) {
-        style.paddingVertical = padSize(props.pad.vertical);
+        style.view.paddingVertical = padSize(props.pad.vertical);
       }
     }
     if (props.separator) {
-      style.borderColor = colorForIndex('border');
+      style.view.borderColor = colorForIndex('border');
       if ('top' === props.separator) {
-        style.borderTopWidth = 1;
+        style.view.borderTopWidth = 1;
       } else if ('bottom' === props.separator) {
-        style.borderBottomWidth = 1;
+        style.view.borderBottomWidth = 1;
       } else if ('left' === props.separator) {
-        style.borderLeftWidth = 1;
+        style.view.borderLeftWidth = 1;
       } else if ('right' === props.separator) {
-        style.borderRightWidth = 1;
+        style.view.borderRightWidth = 1;
       } else if ('horizontal' === props.separator) {
-        style.borderTopWidth = 1;
-        style.borderBottomWidth = 1;
+        style.view.borderTopWidth = 1;
+        style.view.borderBottomWidth = 1;
       } else if ('vertical' === props.separator) {
-        style.borderLeftWidth = 1;
-        style.borderRightWidth = 1;
+        style.view.borderLeftWidth = 1;
+        style.view.borderRightWidth = 1;
       }
     }
     if (props.flex) {
-      style.flex = 1;
+      style.view.flex = 1;
     }
     if (props.colorIndex) {
-      style.backgroundColor = colorForIndex(props.colorIndex);
+      style.view.backgroundColor = colorForIndex(props.colorIndex);
     }
     if (props.statusBar) {
-      style.paddingTop = style.paddingVertical + 12;
+      style.view.paddingTop = style.view.paddingVertical + 12;
     }
-    return style; //StyleSheet.create(style);
+    return StyleSheet.create(style);
   };
 
   setNativeProps (nativeProps) {
@@ -83,13 +83,14 @@ export default class Box extends Component {
   }
 
   render () {
+    const { style } = this.state;
     let statusBar;
     if (this.props.statusBar) {
       const barStyle = (this.props.colorIndex ? 'light-content' : 'default');
       statusBar = <StatusBar barStyle={barStyle} />;
     }
     return (
-      <View ref="view" style={{...this.state.style, ...this.props.style}}>
+      <View ref="view" style={[style.view, this.props.style]}>
         {statusBar}
         {this.props.children}
       </View>
