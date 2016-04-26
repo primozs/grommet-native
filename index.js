@@ -9,6 +9,7 @@ import Header from './components/Header';
 import Heading from './components/Heading';
 import Meter from './components/Meter';
 import Notification from './components/Notification';
+import Query from './utils/Query';
 import Search from './components/Search';
 import Text from './components/Text';
 import TextInput from './components/TextInput';
@@ -27,4 +28,4 @@ const style = {
 };
 
 export { Box, Button, Footer, FormField, FormFields, Header, Heading, Meter,
-  Notification, Search, Text, TextInput, Title, style, icons };
+  Notification, Query, Search, Text, TextInput, Title, style, icons };
