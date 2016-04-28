@@ -19,8 +19,10 @@ export default class Button extends Component {
   _styleFromProps (props) {
     let style = {
       view: {
+        flexDirection: 'row',
         paddingHorizontal: padSize('medium'),
         paddingVertical: padSize('small'),
+        justifyContent: 'center',
         alignItems: 'center'
       },
       text: {
@@ -29,7 +31,7 @@ export default class Button extends Component {
         fontWeight: '600'
       }
     };
-    if (props.icon) {
+    if (props.icon && ! props.label) {
       style.view.paddingHorizontal = padSize('small');
     } else if (props.primary) {
       style.view.backgroundColor = colorForIndex('brand');
@@ -39,27 +41,52 @@ export default class Button extends Component {
       style.text.color = colorForIndex('colored');
     } else if (props.colorIndex) {
       style.text.color = colorForIndex(props.colorIndex);
-    } else {
+    } else if (! props.fill) {
       style.view.borderWidth = 4;
       style.view.borderStyle = 'solid';
-      style.view.borderColor = colorForIndex('brand');
+      if (props.secondary) {
+        style.view.borderColor = colorForIndex('border');
+      } else {
+        style.view.borderColor = colorForIndex('brand');
+      }
+    }
+    if ('between' === props.justify) {
+      style.view.justifyContent = 'space-between';
+    }
+    if (props.fill) {
+      style.view.flex = 1;
+      if (props.icon && props.label && props.reverse) {
+        delete style.view.paddingHorizontal;
+        style.view.paddingRight = padSize('small');
+        style.view.paddingLeft = padSize('medium');
+      }
+    }
+    if (props.label && props.icon) {
+      if (props.reverse) {
+        style.text.paddingRight = padSize('small');
+      } else {
+        style.text.paddingLeft = padSize('small');
+      }
     }
 
     return StyleSheet.create(style);
   }
 
   render () {
+    const { reverse } = this.props;
     const { style } = this.state;
     let label;
     if (this.props.label) {
       label = <Text style={style.text}>{this.props.label}</Text>;
     }
-    let icon = this.props.icon;
+    const icon = this.props.icon;
+    const first = reverse ? label : icon;
+    const second = reverse ? icon : label;
     return (
       <TouchableHighlight style={this.props.style} onPress={this.props.onPress}>
         <View style={style.view}>
-          {icon}
-          {label}
+          {first}
+          {second}
         </View>
       </TouchableHighlight>
     );
@@ -73,8 +100,14 @@ Button.propTypes = {
   fill: PropTypes.bool,
   icon: PropTypes.element,
   label: PropTypes.node,
+  justify: PropTypes.oneOf(['center', 'between']),
   onPress: PropTypes.func,
   plain: PropTypes.bool,
   primary: PropTypes.bool,
+  reverse: PropTypes.bool,
   secondary: PropTypes.bool
+};
+
+Button.defaultProps = {
+  justify: 'center'
 };

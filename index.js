@@ -7,6 +7,7 @@ import FormField from './components/FormField';
 import FormFields from './components/FormFields';
 import Header from './components/Header';
 import Heading from './components/Heading';
+import Menu from './components/Menu';
 import Meter from './components/Meter';
 import Notification from './components/Notification';
 import Query from './utils/Query';
@@ -27,5 +28,5 @@ const style = {
   spacingUnit: spacingUnit
 };
 
-export { Box, Button, Footer, FormField, FormFields, Header, Heading, Meter,
+export { Box, Button, Footer, FormField, FormFields, Header, Heading, Menu, Meter,
   Notification, Query, Search, Text, TextInput, Title, style, icons };

@@ -37,7 +37,7 @@ const COLOR_MAP = {
   'text': '#333333',
   'secondary': '#777777',
   'border': 'rgba(0, 0, 0, 0.15)',
-  'icon': 'rgba(0, 0, 0, 0.25)',
+  'icon': 'rgba(0, 0, 0, 0.35)',
   'colored': 'rgba(255, 255, 255, 0.9)',
   'colored-inactive': 'rgba(255, 255, 255, 0.5)',
   'active': '#000000',
