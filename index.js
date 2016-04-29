@@ -15,6 +15,7 @@ import Query from './utils/Query';
 import Search from './components/Search';
 import Text from './components/Text';
 import TextInput from './components/TextInput';
+import Timestamp from './components/Timestamp';
 import Title from './components/Title';
 import { colorForIndex, padSize, spacingUnit, errorText, fontFamily,
   formFieldTextInput } from './style';
@@ -30,5 +31,5 @@ const style = {
 };
 
 export { Box, Button, Chart, Footer, FormField, FormFields, Header, Heading,
-  Menu, Meter, Notification, Query, Search, Text, TextInput, Title, style,
-  icons };
+  Menu, Meter, Notification, Query, Search, Text, TextInput, Timestamp, Title,
+  style, icons };
