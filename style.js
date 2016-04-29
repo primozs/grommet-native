@@ -50,6 +50,21 @@ export function colorForIndex (name) {
   return COLOR_MAP[name];
 };
 
+// react-native-art-svg doesn't understand rgba() color values. So, we parse
+// them to set strokeOpacity.
+const RGBA = new RegExp(/rgba\(([^,]+,[^,]+,[^,]+),\s*([^\)]+)\)/);
+
+export function svgColorForIndex (name) {
+  let color = colorForIndex(name);
+  const match = RGBA.exec(color);
+  let opacity = 1;
+  if (match) {
+    color = `rgb(${match[1]})`;
+    opacity = parseFloat(match[2]);
+  }
+  return { color: color, opacity: opacity };
+}
+
 export function padSize (name) {
   return PAD_MAP[name];
 };

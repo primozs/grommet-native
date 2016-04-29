@@ -1,6 +1,7 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
 import Add from './Add';
+import Blank from './Blank';
 import Close from './Close';
 import Cube from './Cube';
 import Dashboard from './Dashboard';
@@ -14,5 +15,5 @@ import Search from './Search';
 import Status from './Status';
 import User from './User';
 
-export { Add, Close, Cube, Dashboard, Edit, Filter, History, Next,
+export { Add, Blank, Close, Cube, Dashboard, Edit, Filter, History, Next,
   Power, Previous, Search, Status, User };

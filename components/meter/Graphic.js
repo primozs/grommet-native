@@ -1,7 +1,7 @@
 // (C) Copyright 2014-2016 Hewlett Packard Enterprise Development LP
 
 import React, { Component, PropTypes } from 'react';
-import Svg, { G, Path } from 'react-native-art-svg';
+import Svg, { G, Path } from 'react-native-svg';
 import { buildPath, propTypes } from './utils';
 
 export default class Graphic extends Component {

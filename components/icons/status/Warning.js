@@ -1,8 +1,8 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
 import React, { Component, PropTypes } from 'react-native';
-import { Path } from 'react-native-art-svg';
-import { colorForIndex } from '../../../style';
+import { Path } from 'react-native-svg';
+import { svgColorForIndex } from '../../../style';
 import Icon from '../Icon';
 
 export default class Warning extends Component {
@@ -11,17 +11,17 @@ export default class Warning extends Component {
     const { inverse, size } = this.props;
     let fill, detailStroke;
     if (inverse) {
-      fill = colorForIndex('colored');
-      detailStroke = colorForIndex('warning');
+      fill = svgColorForIndex('colored');
+      detailStroke = svgColorForIndex('warning');
     } else {
-      fill = colorForIndex('warning');
-      detailStroke = colorForIndex('colored');
+      fill = svgColorForIndex('warning');
+      detailStroke = svgColorForIndex('colored');
     }
     let detail;
     if ('small' !== size) {
       detail = (
         <Path fill="none" strokeWidth="2" strokeLinecap="butt"
-          stroke={detailStroke}
+          stroke={detailStroke.color} strokeOpacity={detailStroke.opacity}
           d="M12,8 L12,14 M12,16 L12,18" />
       );
     } else {
@@ -29,7 +29,7 @@ export default class Warning extends Component {
     }
     return (
       <Icon size={size}>
-        <Path stroke="none" fill={fill}
+        <Path fill={fill.color} fillOpacity={fill.opacity}
           d="M12,0 L0,22 L24,22 L12,0 L12,0 Z" />
         {detail}
       </Icon>

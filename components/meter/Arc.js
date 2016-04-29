@@ -1,7 +1,7 @@
 // (C) Copyright 2014-2016 Hewlett Packard Enterprise Development LP
 
 import React from 'react';
-import { Path } from 'react-native-art-svg';
+import { Path } from 'react-native-svg';
 import { baseUnit, baseDimension, translateEndAngle, arcCommands, polarToCartesian } from './utils';
 import Graphic from './Graphic';
 

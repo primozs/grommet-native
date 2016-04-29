@@ -323,13 +323,41 @@ export default class Meter extends Component {
 }
 
 Meter.propTypes = {
-  align: PropTypes.oneOf(['start', 'center', 'end']),
-  margin: PropTypes.oneOf(['none', 'small', 'medium', 'large']),
+  important: PropTypes.number,
+  max: PropTypes.oneOfType([
+    PropTypes.shape({
+      value: PropTypes.number.isRequired,
+      label: PropTypes.string
+    }),
+    PropTypes.number
+  ]),
+  min: PropTypes.oneOfType([
+    PropTypes.shape({
+      value: PropTypes.number.isRequired,
+      label: PropTypes.string
+    }),
+    PropTypes.number
+  ]),
+  series: PropTypes.arrayOf(PropTypes.shape({
+    label: PropTypes.string,
+    value: PropTypes.number.isRequired,
+    colorIndex: PropTypes.string,
+    important: PropTypes.bool
+  })),
   size: PropTypes.oneOf(['small', 'medium', 'large']),
-  strong: PropTypes.bool,
-  level: PropTypes.oneOf([1, 2, 3, 4, 5])
+  stacked: PropTypes.bool,
+  threshold: PropTypes.number,
+  thresholds: PropTypes.arrayOf(PropTypes.shape({
+    label: PropTypes.string,
+    value: PropTypes.number.isRequired,
+    colorIndex: PropTypes.string
+  })),
+  type: PropTypes.oneOf(['bar', 'arc', 'circle', 'spiral']),
+  units: PropTypes.string,
+  value: PropTypes.number,
+  vertical: PropTypes.bool
 };
 
 Meter.defaultProps = {
-  level: 1
+  type: 'bar'
 };

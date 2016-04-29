@@ -1,8 +1,8 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
 import React, { Component, PropTypes } from 'react-native';
-import Svg, { G, Rect, Path } from 'react-native-art-svg';
-import { spacingUnit, colorForIndex } from '../../style';
+import Svg, { G, Rect, Path } from 'react-native-svg';
+import { spacingUnit, svgColorForIndex } from '../../style';
 
 const SIZE = {
   small: spacingUnit / 2,
@@ -11,23 +11,14 @@ const SIZE = {
   huge: spacingUnit * 12
 };
 
-// react-native-art-svg doesn't understand rgba() color values. So, we parse
-// them to set strokeOpacity.
-const RGBA = new RegExp('rgba[^,]+,[^,]+,[^,]+,\s*([^\)]+)');
-
 export default class Icon extends Component {
 
   constructor (props) {
     super(props);
-    const color = colorForIndex(props.colorIndex);
-    const match = RGBA.exec(color);
-    let opacity = 1;
-    if (match) {
-      opacity = parseFloat(match[1]);
-    }
+    const color = svgColorForIndex(props.colorIndex);
     this.state = {
-      color: colorForIndex(props.colorIndex),
-      opacity: opacity,
+      color: color.color,
+      opacity: color.opacity,
       size: SIZE[props.size]
     };
   }

@@ -9,7 +9,7 @@ import Unknown from './status/Unknown';
 // import Blank from './status/Blank';
 // import Label from './status/Label';
 
-const COMPONENT = {
+const TYPE = {
   critical: Critical,
   disabled: Disabled,
   ok: OK,
@@ -21,8 +21,8 @@ export default class Status extends Component {
 
   render () {
     const { inverse, size, value } = this.props;
-    const Component = COMPONENT[value.toLowerCase()] || COMPONENT.unknown;
-    return <Component size={size} inverse={inverse} />;
+    const Type = TYPE[value.toLowerCase()] || TYPE.unknown;
+    return <Type size={size} inverse={inverse} />;
   }
 };
 
