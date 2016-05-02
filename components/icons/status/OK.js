@@ -1,7 +1,7 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
 import React, { Component, PropTypes } from 'react-native';
-import { Circle, Path, Rect } from 'react-native-svg';
+import { Circle, Path } from 'react-native-svg';
 import { svgColorForIndex } from '../../../style';
 import Icon from '../Icon';
 
@@ -26,12 +26,9 @@ export default class OK extends Component {
     } else {
       detail = <Path fill="none" />;
     }
-    // TODO: Remove Rect once Circle with fill works again :(
     return (
       <Icon size={size}>
         <Circle cx="12" cy="12" r="12" fill={fill.color} fillOpacity={fill.opacity} />
-        <Rect x="3" y="3" width="18" height="18"
-          fill={fill.color} fillOpacity={fill.opacity} />
         {detail}
       </Icon>
     );

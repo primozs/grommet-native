@@ -30,6 +30,8 @@
     "del": "^2.2.0",
     "gulp": "^3.9.1",
     "mkdirp": "^0.5.1",
+    "react-native": "^0.24.0",
+    "react-native-svg": "^1.2.3",
     "run-sequence": "^1.1.5"
   },
   "scripts": {
