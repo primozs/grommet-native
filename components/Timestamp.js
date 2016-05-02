@@ -8,10 +8,13 @@ export default class Timestamp extends Component {
   render () {
     let value = typeof this.props.value === 'string' ?
       new Date(this.props.value) : this.props.value;
-    const dateOptions = { year: 'numeric', month: 'short', day: 'numeric' };
-    const date = value.toLocaleDateString('en-US', dateOptions);
-    const timeOptions = { hour: '2-digit', minute: '2-digit' };
-    const time = value.toLocaleTimeString('en-US', timeOptions);
+    let date, time;
+    if (value) {
+      const dateOptions = { year: 'numeric', month: 'short', day: 'numeric' };
+      date = value.toLocaleDateString('en-US', dateOptions);
+      const timeOptions = { hour: '2-digit', minute: '2-digit' };
+      time = value.toLocaleTimeString('en-US', timeOptions);
+    }
     return (
       <Text style={STYLE.text}>
         {date} {time}
@@ -29,8 +32,8 @@ Timestamp.propTypes = {
 
 const STYLE = StyleSheet.create({
   text: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: '100',
-    textAlign: 'right'
+    textAlign: 'left'
   }
 });
