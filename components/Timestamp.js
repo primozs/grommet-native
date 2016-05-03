@@ -16,7 +16,7 @@ export default class Timestamp extends Component {
       time = value.toLocaleTimeString('en-US', timeOptions);
     }
     return (
-      <Text style={STYLE.text}>
+      <Text style={[STYLE.text, this.props.style]}>
         {date} {time}
       </Text>
     );

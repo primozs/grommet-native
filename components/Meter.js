@@ -155,19 +155,25 @@ export default class Meter extends Component {
         flexDirection: 'row',
         alignItems: 'center'
       },
+      text: {},
       valueText: {
         fontSize: 36,
         fontWeight: '700',
         paddingRight: (baseUnit / 4)
       },
       unitsText: {
-        fontSize: 20,
-        color: colorForIndex('secondary')
+        fontSize: 20
       },
       labelText: {
         fontSize: 16
       }
     };
+    if (props.colorIndex) {
+      style.text.color = colorForIndex(props.colorIndex);
+
+    } else {
+      style.unitsText.color = colorForIndex('secondary');
+    }
     if ('bar' === props.type) {
       style.view = {
         flexDirection: 'row',
@@ -274,7 +280,7 @@ export default class Meter extends Component {
     let units;
     if (this.props.units) {
       units = (
-        <Text style={style.unitsText}>
+        <Text style={[style.text, style.unitsText]}>
           {this.props.units}
         </Text>
       );
@@ -283,12 +289,12 @@ export default class Meter extends Component {
     return (
       <View style={style.activeView}>
         <View style={style.valueView}>
-          <Text style={style.valueText}>
+          <Text style={[style.text, style.valueText]}>
             {fields.value}
           </Text>
           {units}
         </View>
-        <Text style={style.labelText}>
+        <Text style={[style.text, style.labelText]}>
           {fields.label}
         </Text>
       </View>
@@ -323,6 +329,7 @@ export default class Meter extends Component {
 }
 
 Meter.propTypes = {
+  colorIndex: PropTypes.string,
   important: PropTypes.number,
   max: PropTypes.oneOfType([
     PropTypes.shape({
