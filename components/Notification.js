@@ -1,6 +1,6 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
-import React, { PropTypes, StyleSheet } from 'react-native';
+import React, { PropTypes, Component, StyleSheet } from 'react-native';
 import Text from './Text';
 import Box from './Box';
 import Meter from './Meter';
@@ -8,51 +8,57 @@ import Timestamp from './Timestamp';
 import StatusIcon from './icons/Status';
 import { colorForIndex, padSize, spacingUnit } from '../style';
 
-export default Notification = (props) => {
+export default class Notification extends Component {
 
-  let context;
-  if (props.context) {
-    context = <Text style={STYLE.context}>{props.context}</Text>;
+  setNativeProps (nativeProps) {
+    this.refs.box.setNativeProps(nativeProps);
   }
 
-  let timestamp;
-  if (props.timestamp) {
-    timestamp = <Timestamp value={props.timestamp} style={STYLE.timestamp} />;
-  }
+  render () {
+    let context;
+    if (this.props.context) {
+      context = <Text style={STYLE.context}>{this.props.context}</Text>;
+    }
 
-  let state;
-  if (props.state) {
-    state = <Text style={STYLE.state}>{props.state}</Text>;
-  }
+    let timestamp;
+    if (this.props.timestamp) {
+      timestamp = <Timestamp value={this.props.timestamp} style={STYLE.timestamp} />;
+    }
 
-  let progress;
-  if (props.percentComplete || 0 === props.percentComplete) {
-    progress = (
-      <Meter units="%"
-        series={[{
-          value: props.percentComplete,
-          label: '',
-          colorIndex: 'light-1'
-        }]}
-        size="large" colorIndex="colored" />
+    let state;
+    if (this.props.state) {
+      state = <Text style={STYLE.state}>{this.props.state}</Text>;
+    }
+
+    let progress;
+    if (this.props.percentComplete || 0 === this.props.percentComplete) {
+      progress = (
+        <Meter units="%"
+          series={[{
+            value: this.props.percentComplete,
+            label: '',
+            colorIndex: 'light-1'
+          }]}
+          size="large" colorIndex="colored" />
+      );
+    }
+
+    return (
+      <Box ref="box" {...this.props} colorIndex={this.props.status} direction="row">
+        <StatusIcon value={this.props.status} inverse={true} />
+        <Box direction="column" style={{marginLeft: padSize('small')}}>
+          <Text style={STYLE.message}>
+            {this.props.message}
+          </Text>
+          {context}
+          {timestamp}
+          {state}
+          {progress}
+          {this.props.children}
+        </Box>
+      </Box>
     );
   }
-
-  return (
-    <Box {...props} colorIndex={props.status} direction="row">
-      <StatusIcon value={props.status} inverse={true} />
-      <Box direction="column" style={{marginLeft: padSize('small')}}>
-        <Text style={STYLE.message}>
-          {props.message}
-        </Text>
-        {context}
-        {timestamp}
-        {state}
-        {progress}
-        {props.children}
-      </Box>
-    </Box>
-  );
 };
 
 Notification.propTypes = {
