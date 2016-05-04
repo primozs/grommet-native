@@ -8,9 +8,12 @@ import Icon from '../Icon';
 export default class Unknown extends Component {
 
   render () {
-    const { inverse, size } = this.props;
+    const { inverse, disabled, size } = this.props;
     let fill, detailColor;
-    if (inverse) {
+    if (disabled) {
+      fill = svgColorForIndex('unset');
+      detailColor = svgColorForIndex('colored');
+    } else if (inverse) {
       fill = svgColorForIndex('colored');
       detailColor = svgColorForIndex('unknown');
     } else {
@@ -42,6 +45,7 @@ export default class Unknown extends Component {
 };
 
 Unknown.propTypes = {
+  disabled: PropTypes.bool,
   inverse: PropTypes.bool,
   size: Icon.propTypes.size
 };

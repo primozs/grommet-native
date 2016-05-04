@@ -8,9 +8,12 @@ import Icon from '../Icon';
 export default class OK extends Component {
 
   render () {
-    const { inverse, size } = this.props;
+    const { inverse, disabled, size } = this.props;
     let fill, detailFill;
-    if (inverse) {
+    if (disabled) {
+      fill = svgColorForIndex('unset');
+      detailFill = svgColorForIndex('colored');
+    } else if (inverse) {
       fill = svgColorForIndex('colored');
       detailFill = svgColorForIndex('ok');
     } else {
@@ -36,6 +39,7 @@ export default class OK extends Component {
 };
 
 OK.propTypes = {
+  disabled: PropTypes.bool,
   inverse: PropTypes.bool,
   size: Icon.propTypes.size
 };

@@ -8,9 +8,12 @@ import Icon from '../Icon';
 export default class Warning extends Component {
 
   render () {
-    const { inverse, size } = this.props;
+    const { inverse, disabled, size } = this.props;
     let fill, detailStroke;
-    if (inverse) {
+    if (disabled) {
+      fill = svgColorForIndex('unset');
+      detailStroke = svgColorForIndex('colored');
+    } else if (inverse) {
       fill = svgColorForIndex('colored');
       detailStroke = svgColorForIndex('warning');
     } else {
@@ -38,6 +41,7 @@ export default class Warning extends Component {
 };
 
 Warning.propTypes = {
+  disabled: PropTypes.bool,
   inverse: PropTypes.bool,
   size: Icon.propTypes.size
 };

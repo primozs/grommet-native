@@ -20,13 +20,14 @@ const TYPE = {
 export default class Status extends Component {
 
   render () {
-    const { inverse, size, value } = this.props;
+    const { inverse, size, value, disabled } = this.props;
     const Type = TYPE[value.toLowerCase()] || TYPE.unknown;
-    return <Type size={size} inverse={inverse} />;
+    return <Type size={size} inverse={inverse} disabled={disabled} />;
   }
 };
 
 Status.propTypes = {
+  disabled: PropTypes.bool,
   inverse: PropTypes.bool,
   size: PropTypes.oneOf(['small', 'medium', 'large', 'huge']),
   value: PropTypes.oneOf(['critical', 'Critical', 'disabled', 'Disabled',
