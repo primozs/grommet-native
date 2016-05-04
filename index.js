@@ -11,6 +11,7 @@ import Heading from './components/Heading';
 import Menu from './components/Menu';
 import Meter from './components/Meter';
 import Notification from './components/Notification';
+import Props from './utils/Props';
 import Query from './utils/Query';
 import Search from './components/Search';
 import Text from './components/Text';
@@ -31,5 +32,5 @@ const style = {
 };
 
 export { Box, Button, Chart, Footer, FormField, FormFields, Header, Heading,
-  Menu, Meter, Notification, Query, Search, Text, TextInput, Timestamp, Title,
-  style, icons };
+  Menu, Meter, Notification, Props, Query, Search, Text, TextInput, Timestamp,
+  Title, style, icons };
