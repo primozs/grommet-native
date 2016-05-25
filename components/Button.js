@@ -36,16 +36,20 @@ export default class Button extends Component {
     } else if (props.primary) {
       style.view.backgroundColor = colorForIndex('brand');
       style.text.color = colorForIndex('colored');
-    } else if (props.accent) {
-      style.view.backgroundColor = colorForIndex('accent-3');
-      style.text.color = colorForIndex('colored');
     } else if (props.colorIndex) {
       style.text.color = colorForIndex(props.colorIndex);
+    } else if (props.fill) {
+      if (props.accent) {
+        style.view.backgroundColor = colorForIndex('accent-3');
+        style.text.color = colorForIndex('colored');
+      }
     } else if (! props.fill) {
       style.view.borderWidth = 4;
       style.view.borderStyle = 'solid';
       if (props.secondary) {
         style.view.borderColor = colorForIndex('border');
+      } else if (props.accent) {
+        style.view.borderColor = colorForIndex('accent-3');
       } else {
         style.view.borderColor = colorForIndex('brand');
       }
