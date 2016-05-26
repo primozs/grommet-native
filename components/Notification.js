@@ -1,6 +1,7 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
-import React, { PropTypes, Component, StyleSheet } from 'react-native';
+import React, { Component, PropTypes } from 'react';
+import { StyleSheet } from 'react-native';
 import Text from './Text';
 import Box from './Box';
 import Meter from './Meter';

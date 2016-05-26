@@ -1,6 +1,6 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
-import React, { Component, PropTypes } from 'react-native';
+import React, { Component, PropTypes } from 'react';
 import OK from './status/OK';
 import Critical from './status/Critical';
 import Warning from './status/Warning';

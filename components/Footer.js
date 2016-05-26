@@ -1,6 +1,6 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
-import React, { PropTypes } from 'react-native';
+import React, { PropTypes } from 'react';
 import Box from './Box';
 
 export default Footer = (props) => {

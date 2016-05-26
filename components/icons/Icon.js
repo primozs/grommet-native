@@ -1,6 +1,6 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
-import React, { Component, PropTypes } from 'react-native';
+import React, { Component, PropTypes } from 'react';
 import Svg, { G, Rect, Path } from 'react-native-svg';
 import { spacingUnit, svgColorForIndex } from '../../style';
 
@@ -30,7 +30,7 @@ export default class Icon extends Component {
     if (pathCommands) {
       contents = (
         <Path fill="none" stroke={color} strokeOpacity={opacity}
-          strokeWidth="2" strokeMiterlimit="10" d={pathCommands}/>
+          strokeWidth={2} strokeMiterlimit={10} d={pathCommands}/>
       );
     } else if (children) {
       contents = children;

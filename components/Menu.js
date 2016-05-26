@@ -1,6 +1,7 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
-import React, { PropTypes, StyleSheet, Children } from 'react-native';
+import React, { PropTypes, Children } from 'react';
+import { StyleSheet } from 'react-native';
 import Box from './Box';
 import { colorForIndex } from '../style';
 

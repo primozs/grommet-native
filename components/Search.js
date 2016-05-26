@@ -1,6 +1,7 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
-import React, { PropTypes, StyleSheet } from 'react-native';
+import React, { PropTypes } from 'react';
+import { StyleSheet } from 'react-native';
 import TextInput from './TextInput';
 import Box from './Box';
 import Text from './Text';

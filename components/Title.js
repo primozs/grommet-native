@@ -1,6 +1,7 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
-import React, { Component, PropTypes, View, StyleSheet } from 'react-native';
+import React, { Component, PropTypes } from 'react';
+import { View, StyleSheet } from 'react-native';
 import Text from './Text';
 import { spacingUnit, padSize, colorForIndex } from '../style';
 

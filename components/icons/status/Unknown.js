@@ -1,6 +1,6 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
-import React, { Component, PropTypes } from 'react-native';
+import React, { Component, PropTypes } from 'react';
 import { G, Circle, Path } from 'react-native-svg';
 import { svgColorForIndex } from '../../../style';
 import Icon from '../Icon';

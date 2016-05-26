@@ -1,6 +1,7 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
-import React, { Component, PropTypes, View, StatusBar, StyleSheet } from 'react-native';
+import React, { Component, PropTypes } from 'react';
+import { View, StatusBar, StyleSheet } from 'react-native';
 import { padSize, colorForIndex } from '../style';
 
 const ALIGN_MAP = {

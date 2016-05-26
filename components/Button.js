@@ -1,7 +1,7 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
-import React, { Component, PropTypes, TouchableHighlight, View,
-  StyleSheet } from 'react-native';
+import React, { Component, PropTypes } from 'react';
+import { TouchableHighlight, View, StyleSheet } from 'react-native';
 import Text from './Text';
 import { colorForIndex, padSize } from '../style';
 
