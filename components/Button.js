@@ -87,7 +87,8 @@ export default class Button extends Component {
     const first = reverse ? label : icon;
     const second = reverse ? icon : label;
     return (
-      <TouchableHighlight style={this.props.style} onPress={this.props.onPress}>
+      <TouchableHighlight style={this.props.style} onPress={this.props.onPress}
+        underlayColor={colorForIndex('unset')}>
         <View style={style.view}>
           {first}
           {second}
