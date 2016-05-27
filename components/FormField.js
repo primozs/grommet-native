@@ -28,16 +28,30 @@ export default class FormField extends Component {
         color: colorForIndex('secondary'),
         paddingHorizontal: spacingUnit,
         paddingVertical: spacingUnit / 4
+      },
+      error: {
+        color: colorForIndex('error'),
+        paddingHorizontal: spacingUnit,
+        paddingBottom: spacingUnit / 4
       }
     };
+    if (props.error) {
+      style.view.borderColor = colorForIndex('error');
+      style.label.paddingBottom = 0;
+    }
     return StyleSheet.create(style);
   }
 
   render () {
     const { style } = this.state;
+    let error;
+    if (this.props.error) {
+      error = <Text style={style.error}>{this.props.error}</Text>;
+    }
     return (
       <View style={style.view}>
         <Text style={style.label}>{this.props.label}</Text>
+        {error}
         {this.props.children}
       </View>
     );
