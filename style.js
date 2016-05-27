@@ -75,6 +75,7 @@ export const formFieldTextInput = {
 };
 
 export const errorText = {
+  paddingVertical: PAD_MAP.small,
   color: colorForIndex('error')
 };
 
