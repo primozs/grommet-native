@@ -6,7 +6,7 @@ import TextInput from './TextInput';
 import Box from './Box';
 import Text from './Text';
 import SearchIcon from './icons/Search';
-import { formFieldTextInput, padSize } from '../style';
+import { formFieldTextInput, padSize, fontSize } from '../style';
 
 export default Search = (props) => {
   let placeholder;
@@ -32,7 +32,7 @@ Search.propTypes = {
 const STYLE = StyleSheet.create({
   text: {
     ...formFieldTextInput,
-    fontSize: 24,
+    fontSize: fontSize(4),
     fontWeight: '600',
     flex: 1
   },
@@ -40,7 +40,7 @@ const STYLE = StyleSheet.create({
     position: 'absolute',
     left: padSize('medium'),
     top: padSize('small'),
-    fontSize: 20,
+    fontSize: fontSize(5),
     fontWeight: '100'
   },
   box: {

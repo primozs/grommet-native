@@ -3,9 +3,7 @@
 import React, { Component, PropTypes } from 'react';
 import { StyleSheet } from 'react-native';
 import Text from './Text';
-import { padSize } from '../style';
-
-const FONT_SIZE_MAP = [64, 48, 36, 24, 18, 18];
+import { padSize, fontSize } from '../style';
 
 const ALIGN_MAP = {
   start: 'left',
@@ -25,7 +23,7 @@ export default class Heading extends Component {
   }
 
   _styleFromProps (props) {
-    let style = { text: {fontSize: FONT_SIZE_MAP[props.level]} };
+    let style = { text: {fontSize: fontSize(props.level)} };
     if (props.strong) {
       style.text.fontWeight = '600';
     }

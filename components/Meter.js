@@ -3,7 +3,7 @@
 import React, { Component, PropTypes } from 'react';
 import { View, StyleSheet } from 'react-native';
 import Text from './Text';
-import { colorForIndex } from '../style';
+import { fontSize, colorForIndex } from '../style';
 import { baseDimension, baseUnit } from './meter/utils';
 import Bar from './meter/Bar';
 import Circle from './meter/Circle';
@@ -158,15 +158,15 @@ export default class Meter extends Component {
       },
       text: {},
       valueText: {
-        fontSize: 36,
+        fontSize: fontSize(3),
         fontWeight: '700',
         paddingRight: (baseUnit / 4)
       },
       unitsText: {
-        fontSize: 20
+        fontSize: fontSize(4)
       },
       labelText: {
-        fontSize: 16
+        fontSize: fontSize(6)
       }
     };
     if (props.colorIndex) {

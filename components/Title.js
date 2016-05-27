@@ -3,7 +3,7 @@
 import React, { Component, PropTypes } from 'react';
 import { View, StyleSheet } from 'react-native';
 import Text from './Text';
-import { spacingUnit, padSize, colorForIndex } from '../style';
+import { spacingUnit, padSize, fontSize, colorForIndex } from '../style';
 
 export default class Title extends Component {
 
@@ -46,7 +46,7 @@ Title.propTypes = {
 
 const STYLE = StyleSheet.create({
   text: {
-    fontSize: 18,
+    fontSize: fontSize(5),
     fontWeight: '600',
     textAlign: 'center'
   },

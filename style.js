@@ -1,5 +1,9 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
+import { PixelRatio } from 'react-native';
+
+const scale = (PixelRatio.get() >= 3) ? 0.8 : 1;
+
 const SPACING_UNIT = 24;
 
 const FONT_FAMILY = 'MetricHPE';
@@ -10,6 +14,15 @@ const PAD_MAP = {
   large: SPACING_UNIT * 2,
   none: 0
 };
+
+const FONT_MAP = [
+  64 * scale,
+  48 * scale,
+  36 * scale,
+  24 * scale,
+  18 * scale,
+  16 * scale
+];
 
 // Remember that react-native-art-svg can't handle rgba()
 const COLOR_MAP = {
@@ -78,5 +91,9 @@ export const errorText = {
   paddingVertical: PAD_MAP.small,
   color: colorForIndex('error')
 };
+
+export function fontSize (level) {
+  return FONT_MAP[level];
+}
 
 export const fontFamily = FONT_FAMILY;

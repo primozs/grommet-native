@@ -3,7 +3,7 @@
 import React, { Component, PropTypes } from 'react';
 import { View, StyleSheet } from 'react-native';
 import Svg, { G, Path, Rect, Circle, Line, Text } from 'react-native-svg';
-import { colorForIndex } from '../style';
+import { fontSize, colorForIndex } from '../style';
 
 const DEFAULT_WIDTH = 384;
 const DEFAULT_HEIGHT = 192;
@@ -439,7 +439,8 @@ export default class Chart extends Component {
         if (this.props.legend && 'inline' === this.props.legend.position) {
           legend.push(
             <Text key={'bar-value_' + item.label || seriesIndex}
-              x={x} y={y} role="presentation" textAnchor="middle" fontSize={24}>
+              x={x} y={y} role="presentation" textAnchor="middle"
+              fontSize={fontSize(4)}>
               {value[1]}
             </Text>
           );
@@ -544,7 +545,7 @@ export default class Chart extends Component {
       return (
         <G key={'x_axis_' + xIndex}>
           <Text x={position.x} y={labelY} role="presentation"
-            textAnchor={position.anchor} fontSize={16}>
+            textAnchor={position.anchor} fontSize={fontSize(6)}>
             {obj.label}
           </Text>
         </G>

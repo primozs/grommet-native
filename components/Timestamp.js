@@ -2,6 +2,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import { StyleSheet } from 'react-native';
+import { fontSize } from '../style';
 import Text from './Text';
 
 export default class Timestamp extends Component {
@@ -33,7 +34,7 @@ Timestamp.propTypes = {
 
 const STYLE = StyleSheet.create({
   text: {
-    fontSize: 14,
+    fontSize: fontSize(6),
     fontWeight: '100',
     textAlign: 'left'
   }

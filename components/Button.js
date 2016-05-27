@@ -3,7 +3,7 @@
 import React, { Component, PropTypes } from 'react';
 import { TouchableHighlight, View, StyleSheet } from 'react-native';
 import Text from './Text';
-import { colorForIndex, padSize } from '../style';
+import { colorForIndex, padSize, fontSize } from '../style';
 
 export default class Button extends Component {
 
@@ -27,7 +27,7 @@ export default class Button extends Component {
       },
       text: {
         color: colorForIndex('text'),
-        fontSize: 19,
+        fontSize: fontSize(5),
         fontWeight: '600'
       }
     };
