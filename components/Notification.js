@@ -7,7 +7,7 @@ import Box from './Box';
 import Meter from './Meter';
 import Timestamp from './Timestamp';
 import StatusIcon from './icons/Status';
-import { colorForIndex, padSize, spacingUnit } from '../style';
+import { colorForIndex, spacingUnit } from '../style';
 
 export default class Notification extends Component {
 
@@ -47,7 +47,7 @@ export default class Notification extends Component {
     return (
       <Box ref="box" {...this.props} colorIndex={this.props.status} direction="row">
         <StatusIcon value={this.props.status} inverse={true} />
-        <Box direction="column" style={{marginLeft: padSize('small')}}>
+        <Box direction="column" flex={true} pad={{horizontal: 'medium'}}>
           <Text style={STYLE.message}>
             {this.props.message}
           </Text>
