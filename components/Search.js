@@ -1,47 +1,53 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { StyleSheet } from 'react-native';
 import TextInput from './TextInput';
 import Box from './Box';
-import Text from './Text';
+import Button from './Button';
 import SearchIcon from './icons/Search';
-import { formFieldTextInput, padSize, fontSize } from '../style';
+import { formFieldTextInput, fontSize, spacingUnit, colorForIndex } from '../style';
 
-export default Search = (props) => {
-  let placeholder;
-  if (! props.value) {
-    placeholder = <Text style={STYLE.placeholder}>Search</Text>;
+export default class Search extends Component {
+
+  constructor () {
+    super();
+    this._onToggle = this._onToggle.bind(this);
   }
 
-  return (
-    <Box style={STYLE.box} direction="row" align="center" pad="small">
-      {placeholder}
-      <TextInput style={STYLE.text}
-        value={props.value} onChangeText={props.onChange} />
-      <SearchIcon />
-    </Box>
-  );
+  _onToggle () {
+    if (this.refs.input.isFocused()) {
+      this.refs.input.blur();
+    } else {
+      this.refs.input.focus();
+    }
+  }
+
+  render () {
+    return (
+      <Box style={STYLE.box} direction="row" align="center">
+        <TextInput ref="input" style={STYLE.text}
+          placeholder="Search" placeholderTextColor={colorForIndex('secondary')}
+          selectTextOnFocus={true}
+          value={this.props.value} onChangeText={this.props.onChange} />
+        <Button icon={<SearchIcon />} onPress={this._onToggle} />
+      </Box>
+    );
+  }
 };
 
 Search.propTypes = {
-  onChange: PropTypes.func,
+  onChange: PropTypes.func.isRequired,
   value: PropTypes.string
 };
 
 const STYLE = StyleSheet.create({
   text: {
     ...formFieldTextInput,
+    height: spacingUnit * 2,
     fontSize: fontSize(4),
     fontWeight: '600',
     flex: 1
-  },
-  placeholder: {
-    position: 'absolute',
-    left: padSize('medium'),
-    top: padSize('small'),
-    fontSize: fontSize(5),
-    fontWeight: '100'
   },
   box: {
     flex: 1,
