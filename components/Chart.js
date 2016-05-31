@@ -186,7 +186,6 @@ export default class Chart extends Component {
     if (this.props.legend && 'overlay' === this.props.legend.position) {
       this._alignLegend();
     }
-    console.log('!!! _onLayout', event.nativeEvent.layout);
     var rect = event.nativeEvent.layout;
     if (rect.width !== this.state.width || rect.height !== this.state.height) {
       let bounds = this._bounds(this.props.series, this.props.xAxis,
