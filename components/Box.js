@@ -70,6 +70,9 @@ export default class Box extends Component {
     if (props.flex) {
       style.view.flex = 1;
     }
+    if (props.wrap) {
+      style.view.flexWrap = 'wrap';
+    }
     if (props.colorIndex) {
       style.view.backgroundColor = colorForIndex(props.colorIndex);
     }
