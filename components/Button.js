@@ -72,6 +72,9 @@ export default class Button extends Component {
         style.text.paddingLeft = padSize('small');
       }
     }
+    if (! props.onPress) {
+      style.view.opacity = 0.2;
+    }
 
     return StyleSheet.create(style);
   }
