@@ -84,12 +84,13 @@ export function padSize (name) {
 };
 
 export const formFieldTextInput = {
-  height: SPACING_UNIT,
-  paddingHorizontal: SPACING_UNIT
+  height: SPACING_UNIT * 2,
+  marginHorizontal: SPACING_UNIT,
+  // underlineColorAndroid: 'transparent'
 };
 
 export const errorText = {
-  paddingVertical: PAD_MAP.small,
+  marginVertical: PAD_MAP.small,
   color: colorForIndex('error')
 };
 

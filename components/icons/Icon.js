@@ -36,7 +36,7 @@ export default class Icon extends Component {
       contents = children;
     }
     return (
-      <Svg version="1.1" viewbox="0 0 24 24" width={size} height={size}>
+      <Svg version="1.1" viewBox="0 0 24 24" width={size} height={size}>
         <G>
           <Rect x="0" y="0" fill="none" width="24" height="24"/>
           {contents}
