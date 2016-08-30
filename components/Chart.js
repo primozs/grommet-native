@@ -3,7 +3,7 @@
 import React, { Component, PropTypes } from 'react';
 import { View, StyleSheet } from 'react-native';
 import Svg, { G, Path, Rect, Circle, Line, Text } from 'react-native-svg';
-import { fontSize, colorForIndex } from '../style';
+import Style from '../Style';
 
 const DEFAULT_WIDTH = 384;
 const DEFAULT_HEIGHT = 192;

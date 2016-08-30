@@ -3,7 +3,7 @@
 import React, { Component, PropTypes } from 'react';
 import { View, StyleSheet } from 'react-native';
 import Text from './Text';
-import { fontSize, colorForIndex } from '../style';
+import Style from '../Style';
 import { baseDimension, baseUnit } from './meter/utils';
 import Bar from './meter/Bar';
 import Circle from './meter/Circle';
@@ -82,8 +82,7 @@ export default class Meter extends Component {
         thresholds[i].value = threshold.value - priorValue;
         thresholds.push({
           label: threshold.label,
-          colorIndex: threshold.colorIndex,
-          ariaLabel: `${threshold.value} ${props.units || ''} ${threshold.label || ''}`
+          colorIndex: threshold.colorIndex
         });
         priorValue = threshold.value;
         if (i === (props.thresholds.length - 1)) {
@@ -158,22 +157,22 @@ export default class Meter extends Component {
       },
       text: {},
       valueText: {
-        fontSize: fontSize(3),
+        fontSize: Style.fontSize(3),
         fontWeight: '700',
         paddingRight: (baseUnit / 4)
       },
       unitsText: {
-        fontSize: fontSize(4)
+        fontSize: Style.fontSize(4)
       },
       labelText: {
-        fontSize: fontSize(6)
+        fontSize: Style.fontSize(6)
       }
     };
     if (props.colorIndex) {
-      style.text.color = colorForIndex(props.colorIndex);
+      style.text.color = Style.colorForIndex(props.colorIndex);
 
     } else {
-      style.unitsText.color = colorForIndex('secondary');
+      style.unitsText.color = Style.colorForIndex('secondary');
     }
     if ('bar' === props.type) {
       style.view = {

@@ -2,7 +2,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import { Path } from 'react-native-svg';
-import { svgColorForIndex } from '../../../style';
+import Style from '../../../Style';
 import Icon from '../Icon';
 
 export default class Critical extends Component {
@@ -11,14 +11,14 @@ export default class Critical extends Component {
     const { inverse, disabled, size } = this.props;
     let fill, detailStroke;
     if (disabled) {
-      fill = svgColorForIndex('unset');
-      detailStroke = svgColorForIndex('colored');
+      fill = Style.svgColorForIndex('unset');
+      detailStroke = Style.svgColorForIndex('colored');
     } else if (inverse) {
-      fill = svgColorForIndex('colored');
-      detailStroke = svgColorForIndex('critical');
+      fill = Style.svgColorForIndex('colored');
+      detailStroke = Style.svgColorForIndex('critical');
     } else {
-      fill = svgColorForIndex('critical');
-      detailStroke = svgColorForIndex('colored');
+      fill = Style.svgColorForIndex('critical');
+      detailStroke = Style.svgColorForIndex('colored');
     }
     let detail;
     if ('small' !== size) {

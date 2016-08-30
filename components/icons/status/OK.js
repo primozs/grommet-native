@@ -2,7 +2,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import { Circle, Path } from 'react-native-svg';
-import { svgColorForIndex } from '../../../style';
+import Style from '../../../Style';
 import Icon from '../Icon';
 
 export default class OK extends Component {
@@ -11,27 +11,29 @@ export default class OK extends Component {
     const { inverse, disabled, size } = this.props;
     let fill, detailFill;
     if (disabled) {
-      fill = svgColorForIndex('unset');
-      detailFill = svgColorForIndex('colored');
+      fill = Style.svgColorForIndex('unset');
+      detailFill = Style.svgColorForIndex('colored');
     } else if (inverse) {
-      fill = svgColorForIndex('colored');
-      detailFill = svgColorForIndex('ok');
+      fill = Style.svgColorForIndex('colored');
+      detailFill = Style.svgColorForIndex('ok');
     } else {
-      fill = svgColorForIndex('ok');
-      detailFill = svgColorForIndex('colored');
+      fill = Style.svgColorForIndex('ok');
+      detailFill = Style.svgColorForIndex('colored');
     }
     let detail;
     if ('small' !== size) {
       detail = (
         <Path fill={detailFill.color} fillOpacity={detailFill.opacity}
-          d="M10,17.4 L5.3,12.7 L6.7,11.3 L10,14.6 L17.3,7.3 L18.7,8.7 L10,17.4 Z" />
+          d={"M10,17.4 L5.3,12.7 L6.7,11.3 L10,14.6 L17.3,7.3 " +
+            "L18.7,8.7 L10,17.4 Z"} />
       );
     } else {
       detail = <Path fill="none" />;
     }
     return (
       <Icon size={size}>
-        <Circle cx="12" cy="12" r="12" fill={fill.color} fillOpacity={fill.opacity} />
+        <Circle cx="12" cy="12" r="12" fill={fill.color}
+          fillOpacity={fill.opacity} />
         {detail}
       </Icon>
     );

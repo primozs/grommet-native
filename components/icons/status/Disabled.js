@@ -2,7 +2,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import { Path } from 'react-native-svg';
-import { svgColorForIndex } from '../../../style';
+import Style from '../../../Style';
 import Icon from '../Icon';
 
 export default class Disabled extends Component {
@@ -11,14 +11,14 @@ export default class Disabled extends Component {
     const { inverse, disabled, size } = this.props;
     let fill, detailStroke;
     if (disabled) {
-      fill = svgColorForIndex('unset');
-      detailStroke = svgColorForIndex('colored');
+      fill = Style.svgColorForIndex('unset');
+      detailStroke = Style.svgColorForIndex('colored');
     } else if (inverse) {
-      fill = svgColorForIndex('colored');
-      detailStroke = svgColorForIndex('disabled');
+      fill = Style.svgColorForIndex('colored');
+      detailStroke = Style.svgColorForIndex('disabled');
     } else {
-      fill = svgColorForIndex('disabled');
-      detailStroke = svgColorForIndex('colored');
+      fill = Style.svgColorForIndex('disabled');
+      detailStroke = Style.svgColorForIndex('colored');
     }
     let detail;
     if ('small' !== size) {
@@ -33,7 +33,8 @@ export default class Disabled extends Component {
     return (
       <Icon size={size}>
         <Path fill={fill.color} fillOpacity={fill.opacity}
-          d="M21,24 L3,24 C1.3,24 0,22.7 0,21 L0,3 C0,1.3 1.3,0 3,0 L21,0 C22.7,0 24,1.3 24,3 L24,21 C24,22.7 22.7,24 21,24 L21,24 Z" />
+          d={"M21,24 L3,24 C1.3,24 0,22.7 0,21 L0,3 C0,1.3 1.3,0 3,0 L21,0 " +
+            "C22.7,0 24,1.3 24,3 L24,21 C24,22.7 22.7,24 21,24 L21,24 Z"} />
         {detail}
       </Icon>
     );

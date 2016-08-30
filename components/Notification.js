@@ -7,7 +7,28 @@ import Box from './Box';
 import Meter from './Meter';
 import Timestamp from './Timestamp';
 import StatusIcon from './icons/Status';
-import { colorForIndex, spacingUnit } from '../style';
+import Style from '../Style';
+
+let _style;
+Style.connect((nextStyle) => {
+  _style = StyleSheet.create({
+    context: {
+      color: nextStyle.colorForIndex('colored'),
+      fontWeight: '600'
+    },
+    message: {
+      color: nextStyle.colorForIndex('colored'),
+      marginTop: (nextStyle.spacingUnit / 6),
+      marginBottom: (nextStyle.spacingUnit / 6)
+    },
+    state: {
+      color: nextStyle.colorForIndex('colored')
+    },
+    timestamp: {
+      color: nextStyle.colorForIndex('colored')
+    }
+  });
+});
 
 export default class Notification extends Component {
 
@@ -18,17 +39,19 @@ export default class Notification extends Component {
   render () {
     let context;
     if (this.props.context) {
-      context = <Text style={STYLE.context}>{this.props.context}</Text>;
+      context = <Text style={_style.context}>{this.props.context}</Text>;
     }
 
     let timestamp;
     if (this.props.timestamp) {
-      timestamp = <Timestamp value={this.props.timestamp} style={STYLE.timestamp} />;
+      timestamp = (
+        <Timestamp value={this.props.timestamp} style={_style.timestamp} />
+      );
     }
 
     let state;
     if (this.props.state) {
-      state = <Text style={STYLE.state}>{this.props.state}</Text>;
+      state = <Text style={_style.state}>{this.props.state}</Text>;
     }
 
     let progress;
@@ -45,10 +68,11 @@ export default class Notification extends Component {
     }
 
     return (
-      <Box ref="box" {...this.props} colorIndex={this.props.status} direction="row">
+      <Box ref="box" {...this.props} colorIndex={this.props.status}
+        direction="row">
         <StatusIcon value={this.props.status} inverse={true} />
         <Box direction="column" flex={true} pad={{horizontal: 'medium'}}>
-          <Text style={STYLE.message}>
+          <Text style={_style.message}>
             {this.props.message}
           </Text>
           {context}
@@ -72,21 +96,3 @@ Notification.defaultProps = {
   pad: 'medium',
   status: 'unknown'
 };
-
-const STYLE = StyleSheet.create({
-  context: {
-    color: colorForIndex('colored'),
-    fontWeight: '600'
-  },
-  message: {
-    color: colorForIndex('colored'),
-    marginTop: (spacingUnit / 6),
-    marginBottom: (spacingUnit / 6)
-  },
-  state: {
-    color: colorForIndex('colored')
-  },
-  timestamp: {
-    color: colorForIndex('colored')
-  }
-});

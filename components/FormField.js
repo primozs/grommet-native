@@ -3,55 +3,49 @@
 import React, { Component, PropTypes } from 'react';
 import { View, StyleSheet } from 'react-native';
 import Text from './Text';
-import { colorForIndex, spacingUnit } from '../style';
+import Style from '../Style';
+
+let _style;
+Style.connect((nextStyle) => {
+  _style = StyleSheet.create({
+    error: {
+      color: nextStyle.colorForIndex('error'),
+      marginHorizontal: nextStyle.spacingUnit,
+      marginBottom: nextStyle.spacingUnit / 4
+    },
+    label: {
+      color: nextStyle.colorForIndex('secondary'),
+      marginHorizontal: nextStyle.spacingUnit,
+      marginVertical: nextStyle.spacingUnit / 4
+    },
+    labelError: {
+      marginBottom: 0
+    },
+    view: {
+      borderColor: nextStyle.colorForIndex('border'),
+      borderStyle: 'solid',
+      borderWidth: 1,
+      marginBottom: -1
+    },
+    viewError: {
+      borderColor: nextStyle.colorForIndex('error')
+    }
+  });
+});
 
 export default class FormField extends Component {
-
-  constructor (props) {
-    super(props);
-    this.state = { style: this._styleFromProps(props) };
-  }
-
-  componentWillReceiveProps (nextProps) {
-    this.setState({ style: this._styleFromProps(nextProps) });
-  }
-
-  _styleFromProps (props) {
-    let style = {
-      view: {
-        borderColor: colorForIndex('border'),
-        borderStyle: 'solid',
-        borderWidth: 1,
-        marginBottom: -1
-      },
-      label: {
-        color: colorForIndex('secondary'),
-        marginHorizontal: spacingUnit,
-        marginVertical: spacingUnit / 4
-      },
-      error: {
-        color: colorForIndex('error'),
-        marginHorizontal: spacingUnit,
-        marginBottom: spacingUnit / 4
-      }
-    };
-    if (props.error) {
-      style.view.borderColor = colorForIndex('error');
-      style.label.marginBottom = 0;
-    }
-    return StyleSheet.create(style);
-  }
-
   render () {
-    const { style } = this.state;
-    console.log('!!! FormField render', style);
+    let viewStyles = [_style.view];
+    let labelStyles = [_style.label];
     let error;
     if (this.props.error) {
-      error = <Text style={style.error}>{this.props.error}</Text>;
+      error = <Text style={_style.error}>{this.props.error}</Text>;
+      viewStyles.push(_style.viewError);
+      labelStyles.push(_style.labelError);
     }
     return (
-      <View style={style.view}>
-        <Text style={style.label}>{this.props.label}</Text>
+      <View style={viewStyles}>
+        <Text style={labelStyles}>{this.props.label}</Text>
         {error}
         {this.props.children}
       </View>

@@ -2,24 +2,35 @@
 
 import React, { Component, PropTypes } from 'react';
 import Svg, { G, Rect, Path } from 'react-native-svg';
-import { spacingUnit, svgColorForIndex } from '../../style';
+import Style from '../../Style';
 
-const SIZE = {
-  small: spacingUnit / 2,
-  medium: spacingUnit,
-  large: spacingUnit * 2,
-  huge: spacingUnit * 12
-};
+let _sizes;
+Style.connect((nextStyle) => {
+  _sizes = {
+    small: nextStyle.spacingUnit / 2,
+    medium: nextStyle.spacingUnit,
+    large: nextStyle.spacingUnit * 2,
+    huge: nextStyle.spacingUnit * 12
+  };
+});
 
 export default class Icon extends Component {
 
   constructor (props) {
     super(props);
-    const color = svgColorForIndex(props.colorIndex);
-    this.state = {
+    this.state = this._stateFromProps(props);
+  }
+
+  componentWillReceiveProps (nextProps) {
+    this.setState(this._stateFromProps(nextProps));
+  }
+
+  _stateFromProps (props) {
+    const color = Style.svgColorForIndex(props.colorIndex);
+    return {
       color: color.color,
       opacity: color.opacity,
-      size: SIZE[props.size]
+      size: _sizes[props.size]
     };
   }
 

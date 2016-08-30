@@ -2,7 +2,7 @@
 
 import React, { PropTypes } from 'react';
 import { Path } from 'react-native-svg';
-import { colorForIndex } from '../../style';
+import Style from '../../Style';
 
 export var baseUnit = 24;
 export var baseDimension = 192; // 24 * 8
@@ -61,7 +61,7 @@ export function translateEndAngle (startAngle, anglePer, value) {
 export function buildPath (itemIndex, commands, colorIndex, active) {
   const strokeWidth = (active ? sliceImportantWidth : sliceWidth);
   return (
-    <Path key={itemIndex} d={commands} stroke={colorForIndex(colorIndex)}
+    <Path key={itemIndex} d={commands} stroke={Style.colorForIndex(colorIndex)}
       strokeWidth={strokeWidth} />
   );
 }

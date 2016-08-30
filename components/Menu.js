@@ -3,14 +3,29 @@
 import React, { PropTypes, Children } from 'react';
 import { StyleSheet } from 'react-native';
 import Box from './Box';
-import { colorForIndex } from '../style';
+import Style from '../Style';
+
+let _style;
+Style.connect((nextStyle) => {
+  _style = StyleSheet.create({
+    child: {
+      borderBottomWidth: 1,
+      borderStyle: 'solid',
+      borderColor: nextStyle.colorForIndex('border')
+    },
+    firstChild: {
+      borderTopWidth: 1
+    }
+  });
+});
 
 export default Menu = (props) => {
   // TODO: Add separator between children
   const children = Children.map(props.children, (element, index) => {
     let result;
     if (element) {
-      let style = (0 === index) ? [STYLE.child, STYLE.firstChild] : STYLE.child;
+      let style = (0 === index) ?
+        [_style.child, _style.firstChild] : _style.child;
       result = React.cloneElement(element, {style: style});
     }
     return result;
@@ -25,14 +40,3 @@ export default Menu = (props) => {
 Menu.propTypes = {
   inline: PropTypes.bool
 };
-
-const STYLE = StyleSheet.create({
-  child: {
-    borderBottomWidth: 1,
-    borderStyle: 'solid',
-    borderColor: colorForIndex('border')
-  },
-  firstChild: {
-    borderTopWidth: 1
-  }
-});

@@ -18,19 +18,9 @@ import Text from './components/Text';
 import TextInput from './components/TextInput';
 import Timestamp from './components/Timestamp';
 import Title from './components/Title';
-import { colorForIndex, padSize, spacingUnit, errorText, fontFamily,
-  formFieldTextInput } from './style';
+import Style from './Style';
 import * as icons from './components/icons/index';
-
-const style = {
-  colorForIndex: colorForIndex,
-  errorText: errorText,
-  fontFamily: fontFamily,
-  formFieldTextInput: formFieldTextInput,
-  padSize: padSize,
-  spacingUnit: spacingUnit
-};
 
 export { Box, Button, Chart, Footer, FormField, FormFields, Header, Heading,
   Menu, Meter, Notification, Props, Query, Search, Text, TextInput, Timestamp,
-  Title, style, icons };
+  Title, Style, icons };

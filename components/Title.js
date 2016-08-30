@@ -3,7 +3,25 @@
 import React, { Component, PropTypes } from 'react';
 import { View, StyleSheet } from 'react-native';
 import Text from './Text';
-import { spacingUnit, padSize, fontSize, colorForIndex } from '../style';
+import Style from '../Style';
+
+let _style;
+Style.connect((nextStyle) => {
+  _style = StyleSheet.create({
+    text: {
+      fontSize: nextStyle.fontSize(5),
+      fontWeight: '600',
+      textAlign: 'center'
+    },
+    view: {
+      alignItems: 'center',
+      flexDirection: 'row',
+      flex: 1,
+      height: (nextStyle.spacingUnit * 2),
+      justifyContent: 'center'
+    }
+  });
+});
 
 export default class Title extends Component {
 
@@ -19,10 +37,10 @@ export default class Title extends Component {
   _styleFromProps (props) {
     let style = { view: {}, text: {} };
     if (props.pad) {
-      style.view.paddingHorizontal = padSize(props.pad);
+      style.view.paddingHorizontal = Style.padSize(props.pad);
     }
     if (props.colorIndex) {
-      style.text.color = colorForIndex(props.colorIndex);
+      style.text.color = Style.colorForIndex(props.colorIndex);
     }
     return StyleSheet.create(style);
   }
@@ -30,8 +48,8 @@ export default class Title extends Component {
   render () {
     const { style } = this.state;
     return (
-      <View style={[STYLE.view, style.view]}>
-        <Text style={[STYLE.text, style.text]}>
+      <View style={[_style.view, style.view]}>
+        <Text style={[_style.text, style.text]}>
           {this.props.children}
         </Text>
       </View>
@@ -43,18 +61,3 @@ Title.propTypes = {
   colorIndex: PropTypes.string,
   pad: PropTypes.oneOf(['none', 'small', 'medium', 'large'])
 };
-
-const STYLE = StyleSheet.create({
-  text: {
-    fontSize: fontSize(5),
-    fontWeight: '600',
-    textAlign: 'center'
-  },
-  view: {
-    alignItems: 'center',
-    flexDirection: 'row',
-    flex: 1,
-    height: (spacingUnit * 2),
-    justifyContent: 'center'
-  }
-});

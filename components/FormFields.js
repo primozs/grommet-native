@@ -2,7 +2,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import { View, StyleSheet } from 'react-native';
-import { padSize } from '../style';
+import Style from '../Style';
 
 export default class FormFields extends Component {
 
@@ -12,7 +12,7 @@ export default class FormFields extends Component {
   }
 
   _styleFromProps (props) {
-    let style = { view: {marginBottom: padSize('large')} };
+    let style = { view: {marginBottom: Style.padSize('large')} };
     if (props.flex) {
       style.view.flex = 1;
     }

@@ -1,17 +1,31 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
-// import React from 'react';
+import React, { Component } from 'react';
 import { TextInput, StyleSheet } from 'react-native';
-import { fontFamily } from '../style';
+import Style from '../Style';
 
-export default class GrommetTextInput extends TextInput {};
-
-const STYLE = StyleSheet.create({
-  text: {
-    fontFamily: fontFamily
-  }
+let _style;
+Style.connect((nextStyle) => {
+  _style = StyleSheet.create({
+    textInput: {
+      height: nextStyle.spacingUnit * 2,
+      marginHorizontal: nextStyle.spacingUnit
+    }
+  });
 });
 
-GrommetTextInput.defaultProps = {
-  style: STYLE.text
+export default class GrommetTextInput extends Component {
+
+  setNativeProps (nativeProps) {
+    this._input.setNativeProps(nativeProps);
+  }
+
+  render () {
+    return (
+      <TextInput ref={(c) => this._input = c} {...this.props}
+        style={[_style.textInput, this.props.style]}>
+        {this.props.children}
+      </TextInput>
+    );
+  }
 };

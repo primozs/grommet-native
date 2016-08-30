@@ -6,7 +6,24 @@ import TextInput from './TextInput';
 import Box from './Box';
 import Button from './Button';
 import SearchIcon from './icons/Search';
-import { formFieldTextInput, fontSize, spacingUnit, colorForIndex } from '../style';
+import Style from '../Style';
+
+let _style;
+Style.connect((nextStyle) => {
+  _style = StyleSheet.create({
+    text: {
+      height: nextStyle.spacingUnit * 2,
+      marginHorizontal: nextStyle.spacingUnit,
+      fontSize: nextStyle.fontSize(4),
+      fontWeight: '600',
+      flex: 1
+    },
+    box: {
+      flex: 1,
+      paddingLeft: 0
+    }
+  });
+});
 
 export default class Search extends Component {
 
@@ -16,18 +33,19 @@ export default class Search extends Component {
   }
 
   _onToggle () {
-    if (this.refs.input.isFocused()) {
-      this.refs.input.blur();
+    if (this._input.isFocused()) {
+      this._input.blur();
     } else {
-      this.refs.input.focus();
+      this._input.focus();
     }
   }
 
   render () {
     return (
-      <Box style={STYLE.box} direction="row" align="center">
-        <TextInput ref="input" style={STYLE.text}
-          placeholder="Search" placeholderTextColor={colorForIndex('secondary')}
+      <Box style={_style.box} direction="row" align="center">
+        <TextInput ref={(c) => this._input = c} style={_style.text}
+          placeholder="Search"
+          placeholderTextColor={Style.colorForIndex('secondary')}
           selectTextOnFocus={true}
           value={this.props.value} onChangeText={this.props.onChange} />
         <Button icon={<SearchIcon />} onPress={this._onToggle} />
@@ -40,17 +58,3 @@ Search.propTypes = {
   onChange: PropTypes.func.isRequired,
   value: PropTypes.string
 };
-
-const STYLE = StyleSheet.create({
-  text: {
-    ...formFieldTextInput,
-    height: spacingUnit * 2,
-    fontSize: fontSize(4),
-    fontWeight: '600',
-    flex: 1
-  },
-  box: {
-    flex: 1,
-    paddingLeft: 0
-  }
-});

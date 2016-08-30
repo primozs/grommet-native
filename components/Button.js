@@ -3,7 +3,7 @@
 import React, { Component, PropTypes } from 'react';
 import { TouchableHighlight, View, StyleSheet } from 'react-native';
 import Text from './Text';
-import { colorForIndex, padSize, fontSize } from '../style';
+import Style from '../Style';
 
 export default class Button extends Component {
 
@@ -20,38 +20,38 @@ export default class Button extends Component {
     let style = {
       view: {
         flexDirection: 'row',
-        paddingHorizontal: padSize('medium'),
-        paddingVertical: padSize('small'),
+        paddingHorizontal: Style.padSize('medium'),
+        paddingVertical: Style.padSize('small'),
         justifyContent: 'center',
         alignItems: 'center'
       },
       text: {
-        color: colorForIndex('text'),
-        fontSize: fontSize(5),
+        color: Style.colorForIndex('text'),
+        fontSize: Style.fontSize(5),
         fontWeight: '600'
       }
     };
     if (props.icon && ! props.label) {
-      style.view.paddingHorizontal = padSize('small');
+      style.view.paddingHorizontal = Style.padSize('small');
     } else if (props.primary) {
-      style.view.backgroundColor = colorForIndex('brand');
-      style.text.color = colorForIndex('colored');
+      style.view.backgroundColor = Style.colorForIndex('brand');
+      style.text.color = Style.colorForIndex('colored');
     } else if (props.colorIndex) {
-      style.text.color = colorForIndex(props.colorIndex);
+      style.text.color = Style.colorForIndex(props.colorIndex);
     } else if (props.fill) {
       if (props.accent) {
-        style.view.backgroundColor = colorForIndex('accent-3');
-        style.text.color = colorForIndex('colored');
+        style.view.backgroundColor = Style.colorForIndex('accent-3');
+        style.text.color = Style.colorForIndex('colored');
       }
     } else if (! props.fill) {
       style.view.borderWidth = 4;
       style.view.borderStyle = 'solid';
       if (props.secondary) {
-        style.view.borderColor = colorForIndex('border');
+        style.view.borderColor = Style.colorForIndex('border');
       } else if (props.accent) {
-        style.view.borderColor = colorForIndex('accent-3');
+        style.view.borderColor = Style.colorForIndex('accent-3');
       } else {
-        style.view.borderColor = colorForIndex('brand');
+        style.view.borderColor = Style.colorForIndex('brand');
       }
     }
     if ('between' === props.justify) {
@@ -61,15 +61,15 @@ export default class Button extends Component {
       style.view.flex = 1;
       if (props.icon && props.label && props.reverse) {
         delete style.view.paddingHorizontal;
-        style.view.paddingRight = padSize('small');
-        style.view.paddingLeft = padSize('medium');
+        style.view.paddingRight = Style.padSize('small');
+        style.view.paddingLeft = Style.padSize('medium');
       }
     }
     if (props.label && props.icon) {
       if (props.reverse) {
-        style.text.paddingRight = padSize('small');
+        style.text.paddingRight = Style.padSize('small');
       } else {
-        style.text.paddingLeft = padSize('small');
+        style.text.paddingLeft = Style.padSize('small');
       }
     }
     if (! props.onPress) {
@@ -91,7 +91,7 @@ export default class Button extends Component {
     const second = reverse ? icon : label;
     return (
       <TouchableHighlight style={this.props.style} onPress={this.props.onPress}
-        underlayColor={colorForIndex('pressed')}>
+        underlayColor={Style.colorForIndex('pressed')}>
         <View style={style.view}>
           {first}
           {second}

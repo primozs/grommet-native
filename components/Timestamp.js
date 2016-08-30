@@ -2,8 +2,19 @@
 
 import React, { Component, PropTypes } from 'react';
 import { StyleSheet } from 'react-native';
-import { fontSize } from '../style';
+import Style from '../Style';
 import Text from './Text';
+
+let _style;
+Style.connect((nextStyle) => {
+  _style = StyleSheet.create({
+    text: {
+      fontSize: nextStyle.fontSize(6),
+      fontWeight: '100',
+      textAlign: 'left'
+    }
+  });
+});
 
 export default class Timestamp extends Component {
 
@@ -18,7 +29,7 @@ export default class Timestamp extends Component {
       time = value.toLocaleTimeString('en-US', timeOptions);
     }
     return (
-      <Text style={[STYLE.text, this.props.style]}>
+      <Text style={[_style.text, this.props.style]}>
         {date} {time}
       </Text>
     );
@@ -31,11 +42,3 @@ Timestamp.propTypes = {
     PropTypes.string
   ])
 };
-
-const STYLE = StyleSheet.create({
-  text: {
-    fontSize: fontSize(6),
-    fontWeight: '100',
-    textAlign: 'left'
-  }
-});

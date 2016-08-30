@@ -3,7 +3,7 @@
 import React, { Component, PropTypes } from 'react';
 import { StyleSheet } from 'react-native';
 import Text from './Text';
-import { padSize, fontSize } from '../style';
+import Style from '../Style';
 
 const ALIGN_MAP = {
   start: 'left',
@@ -23,14 +23,14 @@ export default class Heading extends Component {
   }
 
   _styleFromProps (props) {
-    let style = { text: {fontSize: fontSize(props.level)} };
+    let style = { text: {fontSize: Style.fontSize(props.level)} };
     if (props.strong) {
       style.text.fontWeight = '600';
     }
     if (props.align) {
       style.text.textAlign = ALIGN_MAP[props.align];
     }
-    style.text.marginBottom = padSize(props.margin || 'medium');
+    style.text.marginBottom = Style.padSize(props.margin || 'medium');
     return StyleSheet.create(style);
   }
 

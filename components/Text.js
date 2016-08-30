@@ -1,19 +1,38 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Text, StyleSheet } from 'react-native';
-import { fontFamily } from '../style';
+import Style from '../Style';
+
+let _style;
+Style.connect((nextStyle) => {
+  _style = StyleSheet.create({
+    error: {
+      marginVertical: nextStyle.padSize('small'),
+      color: nextStyle.colorForIndex('error')
+    },
+    text: {
+      fontFamily: nextStyle.fontFamily
+    }
+  });
+});
 
 export default GrommetText = (props) => {
+  const { error } = props;
+
+  let styles = [_style.text];
+  if (error) {
+    styles.push(_style.error);
+  }
+  styles.push(props.style);
+
   return (
-    <Text {...props} style={[STYLE.text, props.style]}>
+    <Text {...props} style={styles}>
       {props.children}
     </Text>
   );
 };
 
-const STYLE = StyleSheet.create({
-  text: {
-    fontFamily: fontFamily
-  }
-});
+GrommetText.propTypes = {
+  error: PropTypes.bool
+};

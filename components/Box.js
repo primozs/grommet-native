@@ -2,7 +2,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import { View, StatusBar, StyleSheet } from 'react-native';
-import { padSize, colorForIndex } from '../style';
+import Style from '../Style';
 
 const ALIGN_MAP = {
   start: 'align-start',
@@ -40,17 +40,17 @@ export default class Box extends Component {
       style.view.justifyContent = JUSTIFY_MAP[props.justify];
     }
     if (typeof props.pad === 'string') {
-      style.view.padding = padSize(props.pad);
+      style.view.padding = Style.padSize(props.pad);
     } else if (typeof props.pad === 'object') {
       if (props.pad.horizontal) {
-        style.view.paddingHorizontal = padSize(props.pad.horizontal);
+        style.view.paddingHorizontal = Style.padSize(props.pad.horizontal);
       }
       if (props.pad.vertical) {
-        style.view.paddingVertical = padSize(props.pad.vertical);
+        style.view.paddingVertical = Style.padSize(props.pad.vertical);
       }
     }
     if (props.separator) {
-      style.view.borderColor = colorForIndex('border');
+      style.view.borderColor = Style.colorForIndex('border');
       if ('top' === props.separator) {
         style.view.borderTopWidth = 1;
       } else if ('bottom' === props.separator) {
@@ -74,7 +74,7 @@ export default class Box extends Component {
       style.view.flexWrap = 'wrap';
     }
     if (props.colorIndex) {
-      style.view.backgroundColor = colorForIndex(props.colorIndex);
+      style.view.backgroundColor = Style.colorForIndex(props.colorIndex);
     }
     if (props.statusBar) {
       style.view.paddingTop = style.view.paddingVertical + 12;
@@ -121,7 +121,8 @@ Box.propTypes = {
   ]),
   primary: PropTypes.bool,
   reverse: PropTypes.bool,
-  separator: PropTypes.oneOf(['top', 'bottom', 'left', 'right', 'horizontal', 'vertical', 'all']),
+  separator: PropTypes.oneOf(['top', 'bottom', 'left', 'right',
+    'horizontal', 'vertical', 'all']),
   statusBar: PropTypes.bool,
   textAlign: PropTypes.oneOf(['left', 'center', 'right']),
   texture: PropTypes.oneOfType([
