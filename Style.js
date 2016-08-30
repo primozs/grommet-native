@@ -102,7 +102,7 @@ const THEMES = {
     }
   },
 
-  hpeinc: {
+  hpinc: {
     fontFamily: 'HPSimplified',
     colors: {
       brand: '#0096D6',
