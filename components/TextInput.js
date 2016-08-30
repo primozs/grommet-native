@@ -23,6 +23,7 @@ export default class GrommetTextInput extends Component {
   render () {
     return (
       <TextInput ref={(c) => this._input = c} {...this.props}
+        underlineColorAndroid="transparent"
         style={[_style.textInput, this.props.style]}>
         {this.props.children}
       </TextInput>

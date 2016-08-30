@@ -176,7 +176,8 @@ function parse (text) {
       }
     }
     if (remaining.length === priorLength) {
-      throw `Syntax error at character ${text.length - priorLength}: ${remaining[0]}`;
+      throw `Syntax error at character ` +
+        `${text.length - priorLength}: ${remaining[0]}`;
     }
   }
 

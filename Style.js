@@ -179,7 +179,6 @@ let _style = {
 let _listeners = [];
 
 export function theme (opt) {
-  console.log('!!! theme set to', opt);
   const theme = (typeof opt === 'string') ? THEMES[opt] : opt;
   _fontFamily = theme.fontFamily;
   _colors = { ...COLORS, ...theme.colors };
