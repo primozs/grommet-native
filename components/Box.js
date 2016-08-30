@@ -1,7 +1,7 @@
 // (C) Copyright 2016 Hewlett Packard Enterprise Development LP
 
 import React, { Component, PropTypes } from 'react';
-import { View, StatusBar, StyleSheet } from 'react-native';
+import { View, StatusBar, StyleSheet, Platform } from 'react-native';
 import Style from '../Style';
 
 const ALIGN_MAP = {
@@ -76,7 +76,7 @@ export default class Box extends Component {
     if (props.colorIndex) {
       style.view.backgroundColor = Style.colorForIndex(props.colorIndex);
     }
-    if (props.statusBar) {
+    if (props.statusBar && 'ios' === Platform.OS) {
       style.view.paddingTop = style.view.paddingVertical + 12;
     }
     return StyleSheet.create(style);
