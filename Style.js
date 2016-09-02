@@ -62,7 +62,7 @@ const COLORS = {
 const THEMES = {
 
   aruba: {
-    fontFamily: 'OpenSans',
+    fontFamily: 'Open Sans',
     colors: {
       brand: '#ff8300',
       'neutral-1': '#646569',
@@ -103,7 +103,7 @@ const THEMES = {
   },
 
   hpinc: {
-    fontFamily: 'HPSimplified',
+    fontFamily: 'HP Simplified',
     colors: {
       brand: '#0096D6',
       'neutral-1': '#006996',
