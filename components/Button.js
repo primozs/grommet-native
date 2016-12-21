@@ -58,7 +58,7 @@ export default class Button extends Component {
       style.view.justifyContent = 'space-between';
     }
     if (props.fill) {
-      style.view.flex = 1;
+      // style.view.flex = 1;
       if (props.icon && props.label && props.reverse) {
         delete style.view.paddingHorizontal;
         style.view.paddingRight = Style.padSize('small');
