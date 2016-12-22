@@ -519,12 +519,14 @@ export default class Chart extends Component {
     if (this.state.highlightXIndex >= 0 &&
       bounds.xAxis.data.length > this.state.highlightXIndex) {
       highlightPosition =
-        this._labelPosition(bounds.xAxis.data[this.state.highlightXIndex].value, bounds);
+        this._labelPosition(
+          bounds.xAxis.data[this.state.highlightXIndex].value, bounds);
     }
     let lastPosition = null;
     if (bounds.xAxis.data.length > 0) {
       lastPosition =
-        this._labelPosition(bounds.xAxis.data[bounds.xAxis.data.length - 1].value, bounds);
+        this._labelPosition(
+          bounds.xAxis.data[bounds.xAxis.data.length - 1].value, bounds);
     }
 
     let labels = bounds.xAxis.data.map((obj, xIndex) => {
@@ -544,7 +546,7 @@ export default class Chart extends Component {
       return (
         <G key={'x_axis_' + xIndex}>
           <Text x={position.x} y={labelY} role="presentation"
-            textAnchor={position.anchor} fontSize={fontSize(6)}>
+            textAnchor={position.anchor} fontSize={fontSize(5)}>
             {obj.label}
           </Text>
         </G>

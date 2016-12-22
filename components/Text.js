@@ -12,7 +12,8 @@ Style.connect((nextStyle) => {
       color: nextStyle.colorForIndex('error')
     },
     text: {
-      fontFamily: nextStyle.fontFamily
+      fontFamily: nextStyle.fontFamily,
+      fontSize: Style.fontSize(5)
     }
   });
 });

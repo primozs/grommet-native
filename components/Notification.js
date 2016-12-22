@@ -18,8 +18,7 @@ Style.connect((nextStyle) => {
     },
     message: {
       color: nextStyle.colorForIndex('colored'),
-      marginTop: (nextStyle.spacingUnit / 6),
-      marginBottom: (nextStyle.spacingUnit / 6)
+      fontSize: Style.fontSize(4)
     },
     state: {
       color: nextStyle.colorForIndex('colored')

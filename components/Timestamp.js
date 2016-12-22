@@ -9,7 +9,6 @@ let _style;
 Style.connect((nextStyle) => {
   _style = StyleSheet.create({
     text: {
-      fontSize: nextStyle.fontSize(6),
       fontWeight: '100',
       textAlign: 'left'
     }

@@ -157,15 +157,15 @@ export default class Meter extends Component {
       },
       text: {},
       valueText: {
-        fontSize: Style.fontSize(3),
+        fontSize: Style.fontSize(2),
         fontWeight: '700',
         paddingRight: (baseUnit / 4)
       },
       unitsText: {
-        fontSize: Style.fontSize(4)
+        fontSize: Style.fontSize(3)
       },
       labelText: {
-        fontSize: Style.fontSize(6)
+        fontSize: Style.fontSize(5)
       }
     };
     if (props.colorIndex) {

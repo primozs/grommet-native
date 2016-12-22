@@ -14,7 +14,7 @@ const PAD_SIZES = {
   none: 0
 };
 
-const SCALE = (PixelRatio.get() >= 3) ? 0.8 : 1;
+const SCALE = (PixelRatio.get() >= 3) ? 1.0 : 1.2;
 
 const FONT_SIZES = [
   64 * SCALE,
